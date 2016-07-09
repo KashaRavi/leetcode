@@ -43,12 +43,16 @@
 
     <modules>
         <module>codechef</module>
+        <module>topcoder</module>
         <module>hackerearth</module>
+        <module>selenium</module>
         <module>crackingCodingInterview</module>
         <module>leetcode</module>
         <module>servlet</module>
         <module>geekforgeeks</module>
         <module>java</module>
         <module>javafx</module>
+        <module>hackerrank</module>
+        <module>git</module>
     </modules>
 </project>

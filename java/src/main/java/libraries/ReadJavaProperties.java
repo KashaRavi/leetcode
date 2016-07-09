@@ -13,7 +13,7 @@ public class ReadJavaProperties {
         try {
             Properties prop = new Properties();
             inpStream = ReadJavaProperties.class.getClassLoader()
-                  .getResourceAsStream("java/src/main/config.properties");
+                  .getResourceAsStream("config.properties");
             if(inpStream != null){
             prop.load(inpStream);
             String value = prop.getProperty("abc.test");
