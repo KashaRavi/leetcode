@@ -7,6 +7,8 @@
     <groupId>groupId</groupId>
     <artifactId>LeetCodeOJ</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
     <build>
         <plugins>
             <plugin>
@@ -32,16 +34,21 @@
             <version>4.0-alpha4</version>
         </dependency>
         <dependency>
-            <groupId>javax.media</groupId>
-            <artifactId>jai_core</artifactId>
-            <version>1.1.3</version>
-        </dependency>
-        <!-- http://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit -->
-        <dependency>
             <groupId>org.eclipse.jgit</groupId>
             <artifactId>org.eclipse.jgit</artifactId>
             <version>4.3.1.201605051710-r</version>
         </dependency>
 
     </dependencies>
+
+    <modules>
+        <module>codechef</module>
+        <module>hackerearth</module>
+        <module>crackingCodingInterview</module>
+        <module>leetcode</module>
+        <module>servlet</module>
+        <module>geekforgeeks</module>
+        <module>java</module>
+        <module>javafx</module>
+    </modules>
 </project>
