@@ -4,9 +4,8 @@ package dijkstra;
  * Created by rkasha on 22-May-16.
  */
 
-import com.hackerrank.printFile.Printer;
+//import com.hackerrank.printFile.Printer;
 
-import java.io.*;
 import java.util.*;
 
 public class Solution {

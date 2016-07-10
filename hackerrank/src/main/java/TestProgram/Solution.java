@@ -1,11 +1,7 @@
 package TestProgram;
 
-import com.hackerrank.printFile.Printer;
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -25,7 +21,7 @@ public class Solution {
         System.setIn(fStream);
         //        Printer printer = new Printer();
         //        printer.main(null);
-        com.hackerrank.dijkstra.Solution sol = new com.hackerrank.dijkstra.Solution();
+        dijkstra.Solution sol = new dijkstra.Solution();
         sol.main(new String[] {});
         fStream.close();
     }
@@ -39,7 +35,7 @@ public class Solution {
         System.setIn(ifStream);
         System.setOut(pStream);
 
-        com.hackerrank.all_pairs_shortest_path.Solution sol = new com.hackerrank.all_pairs_shortest_path.Solution();
+        all_pairs_shortest_path.Solution sol = new all_pairs_shortest_path.Solution();
         sol.main(new String[] {});
 
         ifStream.close();

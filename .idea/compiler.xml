@@ -17,40 +17,6 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="codechef" />
-        <module name="crackingCodingInterview" />
-        <module name="geekforgeeks" />
-        <module name="git" />
-        <module name="hackerearth" />
-        <module name="hackerrank" />
-        <module name="java" />
-        <module name="javafx" />
-        <module name="leetcode" />
-        <module name="selenium" />
-        <module name="servlet" />
-        <module name="topcoder" />
-      </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="codechef" target="1.5" />
-      <module name="crackingCodingInterview" target="1.5" />
-      <module name="geekforgeeks" target="1.5" />
-      <module name="git" target="1.5" />
-      <module name="hackerearth" target="1.5" />
-      <module name="hackerrank" target="1.5" />
-      <module name="java" target="1.5" />
-      <module name="javafx" target="1.5" />
-      <module name="leetcode" target="1.5" />
-      <module name="LeetCodeOJ" target="1.8" />
-      <module name="practice" target="1.8" />
-      <module name="selenium" target="1.5" />
-      <module name="servlet" target="1.5" />
-      <module name="topcoder" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>

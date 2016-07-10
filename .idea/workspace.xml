@@ -2,32 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c917180-c881-4cb0-933e-6489359bef9f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/git/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hackerrank/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/selenium/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topcoder/pom.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/java/FinallyBlockTest.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codechef/codechef.iml" afterPath="$PROJECT_DIR$/codechef/codechef.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codechef/pom.xml" afterPath="$PROJECT_DIR$/codechef/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crackingCodingInterview/pom.xml" afterPath="$PROJECT_DIR$/crackingCodingInterview/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geekforgeeks/pom.xml" afterPath="$PROJECT_DIR$/geekforgeeks/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hackerearth/pom.xml" afterPath="$PROJECT_DIR$/hackerearth/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/java.iml" afterPath="$PROJECT_DIR$/java/java.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/pom.xml" afterPath="$PROJECT_DIR$/java/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/src/main/java/libraries/ReadJavaProperties.java" afterPath="$PROJECT_DIR$/java/src/main/java/libraries/ReadJavaProperties.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javafx/pom.xml" afterPath="$PROJECT_DIR$/javafx/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leetcode/pom.xml" afterPath="$PROJECT_DIR$/leetcode/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/practice.iml" afterPath="$PROJECT_DIR$/practice.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/git/PatchCreator.java" afterPath="$PROJECT_DIR$/git/src/main/java/PatchCreator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/java/src/main/config.properties" afterPath="$PROJECT_DIR$/java/src/main/resources/config.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/selenium/FirstSeleniumTest.java" afterPath="$PROJECT_DIR$/selenium/src/main/java/FirstSeleniumTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/selenium/GoogleSuggest.java" afterPath="$PROJECT_DIR$/selenium/src/main/java/GoogleSuggest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/linkedList.properties" afterPath="$PROJECT_DIR$/java/src/main/resources/linkedList.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/topcoder/DoubleOrOneEasy.java" afterPath="$PROJECT_DIR$/topcoder/src/main/java/DoubleOrOneEasy.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hackerearth/src/main/java/hiring1/components/TestClass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hackerearth/src/main/java/hiring1/index/TestClass.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hackerrank/pom.xml" afterPath="$PROJECT_DIR$/hackerrank/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hackerrank/src/main/java/TestProgram/Solution.java" afterPath="$PROJECT_DIR$/hackerrank/src/main/java/TestProgram/Solution.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hackerrank/src/main/java/dijkstra/Solution.java" afterPath="$PROJECT_DIR$/hackerrank/src/main/java/dijkstra/Solution.java" />
     </list>
     <ignored path="LeetCodeOJ.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,6 +28,7 @@
     <ignored path="$PROJECT_DIR$/git/target/" />
     <ignored path="$PROJECT_DIR$/selenium/target/" />
     <ignored path="$PROJECT_DIR$/topcoder/target/" />
+    <ignored path=".idea/compiler.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,27 +36,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="true" />
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="LeetCodeOJ" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,10 +55,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/servlet/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/servlet/src/DisplayHeader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/servlet/src/main/ShowError.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/servlet/src/ShowError.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/servlet/ShowError.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/java/FinallyBlockTest.class" />
         <option value="$PROJECT_DIR$/crackingCodingInterview/src/main/java/LinkedLists/CheckPalindrome.java" />
@@ -136,25 +101,16 @@
         <option value="$PROJECT_DIR$/javafx/pom.xml" />
         <option value="$PROJECT_DIR$/hackerrank/pom.xml" />
         <option value="$PROJECT_DIR$/git/pom.xml" />
+        <option value="$PROJECT_DIR$/hackerearth/src/main/java/hiring1/index/TestClass.java" />
+        <option value="$PROJECT_DIR$/hackerearth/src/main/java/hiring1/components/TestClass.java" />
+        <option value="$PROJECT_DIR$/hackerrank/src/main/java/dijkstra/Solution.java" />
+        <option value="$PROJECT_DIR$/hackerrank/src/main/java/TestProgram/Solution.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../My ProgramFiles/apache-maven-3.3.9" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="MavenProjectNavigator">
-    <treeState>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-      </PATH>
-    </treeState>
+    <treeState />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
@@ -188,6 +144,8 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,9 +153,15 @@
               <option name="myItemId" value="LeetCodeOJ" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -205,96 +169,267 @@
               <option name="myItemId" value="LeetCodeOJ" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hackerrank" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hackerrank" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hackerrank" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestProgram" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hackerrank" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dijkstra" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hackerrank" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="breadthfirstsearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hackerearth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hackerearth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hackerearth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiring1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hackerearth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiring1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LeetCodeOJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/servlet/src/main/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\rkasha\My Projects\leetcode\java\src\main\resources" />
-      <recent name="D:\rkasha\My Projects\leetcode\java\src\main\java\libraries" />
-      <recent name="D:\rkasha\My Projects\leetcode\java\src\main" />
-      <recent name="D:\rkasha\My Projects\leetcode\topcoder\src\main\java" />
-      <recent name="D:\rkasha\My Projects\leetcode\selenium\src\main\java" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\rkasha\My Projects\leetcode\topcoder" />
-      <recent name="D:\rkasha\My Projects\leetcode\selenium" />
-      <recent name="D:\rkasha\My Projects\leetcode\git" />
-      <recent name="D:\rkasha\My Projects\leetcode\hackerrank" />
-      <recent name="D:\rkasha\My Projects\leetcode\javafx" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.ReadJavaProperties">
-    <configuration default="false" name="Fraction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="amazon.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="amazon.Fraction" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="geekforgeeks" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="rhezonquery.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="rhezonquery.TestClass" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="hackerearth" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestClass (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="validstrings.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="validstrings.TestClass" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="hackerearth" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.Solution">
     <configuration default="false" name="MyApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="MyApplication" />
@@ -327,6 +462,66 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="java" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestClass (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="hiring1.index.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="hiring1.index.TestClass" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="hackerearth" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestClass (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="hiring1.components.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="hiring1.components.TestClass" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="hackerearth" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="dijkstra.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="dijkstra.Solution" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="hackerrank" />
       <envs />
       <method />
     </configuration>
@@ -587,27 +782,24 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.Fraction" />
-      <item index="1" class="java.lang.String" itemvalue="Application.TestClass" />
-      <item index="2" class="java.lang.String" itemvalue="Application.TestClass (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Application.MyApplication" />
-      <item index="4" class="java.lang.String" itemvalue="Application.ReadJavaProperties" />
+      <item index="0" class="java.lang.String" itemvalue="Application.MyApplication" />
+      <item index="1" class="java.lang.String" itemvalue="Application.ReadJavaProperties" />
+      <item index="2" class="java.lang.String" itemvalue="Application.TestClass (2)" />
+      <item index="3" class="java.lang.String" itemvalue="Application.TestClass (3)" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Solution" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.ReadJavaProperties" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MyApplication" />
-        <item index="2" class="java.lang.String" itemvalue="Application.TestClass (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Application.TestClass" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Fraction" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Solution" />
+        <item index="1" class="java.lang.String" itemvalue="Application.TestClass (3)" />
+        <item index="2" class="java.lang.String" itemvalue="Application.TestClass (2)" />
+        <item index="3" class="java.lang.String" itemvalue="Application.ReadJavaProperties" />
+        <item index="4" class="java.lang.String" itemvalue="Application.MyApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -631,7 +823,21 @@
       <option name="project" value="LOCAL" />
       <updated>1468103065818</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Another refactoring...">
+      <created>1468105151127</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1468105151127</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Another refactoring...">
+      <created>1468105332824</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1468105332824</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -640,189 +846,75 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18295455" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33959228" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35113636" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28977272" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3125" sideWeight="0.51287556" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3444206" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35113636" sideWeight="0.49570817" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24839056" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18295455" sideWeight="0.48712447" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3125" sideWeight="0.48712447" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1796875" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18295455" sideWeight="0.48712447" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3125" sideWeight="0.51287556" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3444206" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35113636" sideWeight="0.49570817" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3125" sideWeight="0.48712447" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24839056" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactored into Modules." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored into Modules." />
+    <MESSAGE value="Another refactoring..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Another refactoring..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/crackingCodingInterview/src/main/java/trees/SubtreeChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding>
-            <marker date="1468097822569" expanded="false" signature="23:63" ph="..." />
-            <marker date="1468097822569" expanded="true" signature="65:90" ph="/**...*/" />
-            <marker date="1468097822569" expanded="true" signature="164:1765" ph="{...}" />
-            <marker date="1468097822569" expanded="true" signature="307:709" ph="//..." />
-            <marker date="1468097822569" expanded="true" signature="934:1194" ph="//..." />
-            <marker date="1468097822569" expanded="true" signature="1815:1924" ph="{...}" />
-            <marker date="1468097822569" expanded="true" signature="1979:2244" ph="{...}" />
-            <marker date="1468097822569" expanded="true" signature="2302:2626" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crackingCodingInterview/src/main/java/trees/PathSum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-          <folding>
-            <marker date="1468097822619" expanded="false" signature="23:115" ph="..." />
-            <marker date="1468097822619" expanded="true" signature="117:142" ph="/**...*/" />
-            <marker date="1468097822619" expanded="true" signature="208:985" ph="{...}" />
-            <marker date="1468097822619" expanded="true" signature="322:545" ph="//..." />
-            <marker date="1468097822619" expanded="true" signature="1057:1405" ph="{...}" />
-            <marker date="1468097822619" expanded="true" signature="1463:1596" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crackingCodingInterview/src/main/java/trees/TreeHeight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding>
-            <marker date="1468097822576" expanded="true" signature="16:41" ph="/**...*/" />
-            <marker date="1468097822576" expanded="true" signature="111:250" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crackingCodingInterview/src/main/java/bitWise/FindNextNum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding>
-            <marker date="1468092831624" expanded="true" signature="46:71" ph="/**...*/" />
-            <marker date="1468092831624" expanded="true" signature="141:378" ph="{...}" />
-            <marker date="1468092831624" expanded="true" signature="421:1638" ph="{...}" />
-            <marker date="1468092831624" expanded="true" signature="1697:1846" ph="{...}" />
-            <marker date="1468092831624" expanded="true" signature="1906:2166" ph="{...}" />
-            <marker date="1468092831624" expanded="true" signature="2200:2671" ph="{...}" />
-            <marker date="1468092831624" expanded="true" signature="2699:3200" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode/src/main/java/javaFeatureTest/JavaTests.java" />
-    <entry file="file://$PROJECT_DIR$/geekforgeeks/src/main/java/amazon/Fraction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding>
-            <marker date="1468098976304" expanded="false" signature="68:140" ph="..." />
-            <marker date="1468098976304" expanded="true" signature="202:1525" ph="{...}" />
-            <marker date="1468098976304" expanded="true" signature="582:600" ph="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/servlet/src/main/java/com/ravi/servlet/HelloWorld.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <marker date="1468099242348" expanded="false" signature="34:186" ph="..." />
-            <marker date="1468099242348" expanded="true" signature="188:230" ph="/**...*/" />
-            <marker date="1468099242348" expanded="false" signature="334:344" ph=" { " />
-            <marker date="1468099242348" expanded="false" signature="367:373" ph=" }" />
-            <marker date="1468099242348" expanded="true" signature="496:609" ph="{...}" />
-            <marker date="1468099242348" expanded="true" signature="636:664" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/servlet/src/main/java/com/ravi/servlet/ShowError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <marker date="1468099255676" expanded="false" signature="110:193" ph="..." />
-            <marker date="1468099255676" expanded="true" signature="450:555" ph="{...}" />
-            <marker date="1468099255676" expanded="true" signature="735:776" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/servlet/src/main/java/com/ravi/servlet/Refresh.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding>
-            <marker date="1468099292419" expanded="true" signature="76:159" ph="..." />
-            <marker date="1468099292419" expanded="true" signature="414:1533" ph="{...}" />
-            <marker date="1468099292419" expanded="true" signature="1713:1754" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -830,7 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -838,11 +929,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <marker date="1468099246354" expanded="true" signature="76:159" ph="..." />
-            <marker date="1468099246354" expanded="true" signature="417:2137" ph="{...}" />
-            <marker date="1468099246354" expanded="true" signature="2317:2358" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,11 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding>
-            <marker date="1468099210992" expanded="true" signature="34:135" ph="..." />
-            <marker date="1468099210992" expanded="true" signature="391:1300" ph="{...}" />
-            <marker date="1468099210992" expanded="true" signature="1480:1521" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -864,12 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <marker date="1468100568696" expanded="false" signature="26:102" ph="/.../" />
-            <marker date="1468100568696" expanded="true" signature="110:359" ph="..." />
-            <marker date="1468100568696" expanded="true" signature="620:1777" ph="{...}" />
-            <marker date="1468100568696" expanded="true" signature="1957:1998" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,12 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <marker date="1468099238496" expanded="true" signature="34:253" ph="..." />
-            <marker date="1468099238496" expanded="true" signature="255:297" ph="/**...*/" />
-            <marker date="1468099238496" expanded="true" signature="476:1375" ph="{...}" />
-            <marker date="1468099238496" expanded="true" signature="1503:1543" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -890,18 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <marker date="1468100592511" expanded="true" signature="25:50" ph="/**...*/" />
-            <marker date="1468100592511" expanded="true" signature="202:379" ph="{...}" />
-            <marker date="1468100592511" expanded="true" signature="450:1141" ph="{...}" />
-            <marker date="1468100592511" expanded="true" signature="478:1135" ph="{...}" />
-            <marker date="1468100592511" expanded="true" signature="1226:2627" ph="{...}" />
-            <marker date="1468100592511" expanded="true" signature="1237:1343" ph="//..." />
-            <marker date="1468100592511" expanded="true" signature="1387:1472" ph="//..." />
-            <marker date="1468100592511" expanded="true" signature="2006:2055" ph="//..." />
-            <marker date="1468100592511" expanded="true" signature="2145:2236" ph="//..." />
-            <marker date="1468100592511" expanded="true" signature="2472:2536" ph="//..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -909,31 +966,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <marker date="1468100729327" expanded="true" signature="19:44" ph="/**...*/" />
-            <marker date="1468100729327" expanded="true" signature="124:580" ph="{...}" />
-            <marker date="1468100729327" expanded="true" signature="178:269" ph="//..." />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/java/FinallyBlockTest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/java/FinallyBlockTest.class" />
     <entry file="file://$PROJECT_DIR$/crackingCodingInterview/src/main/java/LinkedLists/LinkedListUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-          <folding>
-            <marker date="1468097822511" expanded="true" signature="46:71" ph="/**...*/" />
-            <marker date="1468097822511" expanded="true" signature="170:522" ph="{...}" />
-            <marker date="1468097822511" expanded="true" signature="577:786" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -941,18 +981,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="638">
           <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-          <folding>
-            <marker date="1468097822554" expanded="false" signature="29:69" ph="..." />
-            <marker date="1468097822554" expanded="true" signature="71:96" ph="/**...*/" />
-            <marker date="1468097822554" expanded="true" signature="157:343" ph="{...}" />
-            <marker date="1468097822554" expanded="true" signature="252:337" ph="{...}" />
-            <marker date="1468097822554" expanded="true" signature="387:566" ph="{...}" />
-            <marker date="1468097822554" expanded="true" signature="454:525" ph="//..." />
-            <marker date="1468097822554" expanded="true" signature="593:1014" ph="{...}" />
-            <marker date="1468097822554" expanded="true" signature="1041:1458" ph="{...}" />
-            <marker date="1468097822554" expanded="true" signature="1485:1982" ph="{...}" />
-            <marker date="1468097822554" expanded="true" signature="2036:2382" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -990,28 +1018,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hackerrank/src/main/java/all_pairs_shortest_path/Solution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <marker date="1468101426448" expanded="false" signature="41:84" ph="..." />
-            <marker date="1468101426448" expanded="true" signature="86:128" ph="/**...*/" />
-            <marker date="1468101426448" expanded="true" signature="224:1990" ph="{...}" />
-            <marker date="1468101426448" expanded="true" signature="1648:1983" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hackerrank/src/main/java/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding>
-            <marker date="1468102051704" expanded="true" signature="0:25" ph="/**...*/" />
-            <marker date="1468102051704" expanded="true" signature="121:799" ph="{...}" />
-            <marker date="1468102051704" expanded="true" signature="871:1176" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1019,57 +1029,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255">
           <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-          <folding>
-            <marker date="1468102051694" expanded="false" signature="7:166" ph="..." />
-            <marker date="1468102051694" expanded="true" signature="168:210" ph="/**...*/" />
-            <marker date="1468102051694" expanded="true" signature="303:367" ph="{...}" />
-            <marker date="1468102051694" expanded="true" signature="438:1245" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468093465444" expanded="true" signature="59:3336" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="104:1924" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="156:241" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="289:372" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="421:664" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="707:793" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="845:945" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="990:1157" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="1201:1439" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="1485:1575" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="1618:1703" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="1760:1909" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="1964:2014" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="2056:2195" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="2090:2180" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="2103:2166" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="2270:2669" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="2846:2907" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="2942:3325" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="2955:3310" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="2990:3296" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="3009:3281" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="3083:3261" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="3123:3227" ph="..." />
-            <marker date="1468093465444" expanded="true" signature="3144:3205" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml" />
     <entry file="file://$PROJECT_DIR$/selenium/src/main/java/GoogleSuggest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <marker date="1468103008636" expanded="false" signature="57:231" ph="..." />
-            <marker date="1468103008636" expanded="true" signature="322:1408" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1077,10 +1044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468092831663" expanded="true" signature="40:65" ph="/**...*/" />
-            <marker date="1468092831663" expanded="true" signature="182:834" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1088,11 +1051,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468092831802" expanded="false" signature="57:209" ph="..." />
-            <marker date="1468092831802" expanded="true" signature="287:1036" ph="{...}" />
-            <marker date="1468092831802" expanded="true" signature="297:454" ph="//..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1100,12 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468092831824" expanded="true" signature="23:48" ph="/**...*/" />
-            <marker date="1468092831824" expanded="true" signature="123:693" ph="{...}" />
-            <marker date="1468092831824" expanded="true" signature="190:599" ph="//..." />
-            <marker date="1468092831824" expanded="true" signature="759:1284" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1133,19 +1085,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/main/resources.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/main/resources.properties" />
     <entry file="file://$PROJECT_DIR$/java/java.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1153,23 +1097,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/main/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/main/config.properties" />
     <entry file="file://$PROJECT_DIR$/java/src/main/resources/config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,11 +1112,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding>
-            <marker date="1468104769522" expanded="false" signature="27:104" ph="..." />
-            <marker date="1468104769522" expanded="true" signature="106:131" ph="/**...*/" />
-            <marker date="1468104769522" expanded="true" signature="208:736" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1265,16 +1195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hackerrank/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <marker date="1468105007803" expanded="true" signature="89:420" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/git/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1287,8 +1207,152 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        <state relative-caret-position="176">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding>
+            <marker date="1468103877385" expanded="true" signature="89:1890" ph="..." />
+            <marker date="1468103877385" expanded="true" signature="451:814" ph="..." />
+            <marker date="1468103877385" expanded="true" signature="469:801" ph="..." />
+            <marker date="1468103877385" expanded="true" signature="490:782" ph="..." />
+            <marker date="1468103877385" expanded="true" signature="645:760" ph="..." />
+            <marker date="1468103877385" expanded="true" signature="834:1429" ph="..." />
+            <marker date="1468103877385" expanded="true" signature="855:1021" ph="..." />
+            <marker date="1468103877385" expanded="true" signature="1042:1211" ph="..." />
+            <marker date="1468103877385" expanded="true" signature="1232:1408" ph="..." />
+            <marker date="1468103877385" expanded="true" signature="1444:1879" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackerrank/src/main/java/all_pairs_shortest_path/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <marker date="1468101426448" expanded="false" signature="41:84" ph="..." />
+            <marker date="1468101426448" expanded="true" signature="86:128" ph="/**...*/" />
+            <marker date="1468101426448" expanded="true" signature="224:1990" ph="{...}" />
+            <marker date="1468101426448" expanded="true" signature="1648:1983" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackerrank/src/main/java/Kruskal/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <marker date="1468101426526" expanded="false" signature="69:99" ph="..." />
+            <marker date="1468101426526" expanded="true" signature="153:324" ph="{...}" />
+            <marker date="1468101426526" expanded="true" signature="235:318" ph="{...}" />
+            <marker date="1468101426526" expanded="true" signature="369:1888" ph="{...}" />
+            <marker date="1468101426526" expanded="true" signature="1976:2207" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackerrank/src/main/java/breadthfirstsearch/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="65" column="48" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
+          <folding>
+            <marker date="1468101426503" expanded="false" signature="36:158" ph="..." />
+            <marker date="1468101426503" expanded="true" signature="160:202" ph="/**...*/" />
+            <marker date="1468101426503" expanded="true" signature="256:405" ph="{...}" />
+            <marker date="1468101426503" expanded="true" signature="328:399" ph="{...}" />
+            <marker date="1468101426503" expanded="true" signature="437:708" ph="{...}" />
+            <marker date="1468101426503" expanded="true" signature="537:702" ph="{...}" />
+            <marker date="1468101426503" expanded="true" signature="753:2467" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackerrank/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <marker date="1468176276823" expanded="true" signature="89:795" ph="..." />
+            <marker date="1468176276823" expanded="true" signature="420:783" ph="..." />
+            <marker date="1468176276823" expanded="true" signature="438:770" ph="..." />
+            <marker date="1468176276823" expanded="true" signature="459:751" ph="..." />
+            <marker date="1468176276823" expanded="true" signature="614:729" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackerrank/src/main/java/dijkstra/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <marker date="1468176357955" expanded="true" signature="181:330" ph="{...}" />
+            <marker date="1468176357955" expanded="true" signature="253:324" ph="{...}" />
+            <marker date="1468176357955" expanded="true" signature="362:558" ph="{...}" />
+            <marker date="1468176357955" expanded="true" signature="443:552" ph="{...}" />
+            <marker date="1468176357955" expanded="true" signature="603:2513" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackerrank/src/main/java/TestProgram/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+          <folding>
+            <marker date="1468176436150" expanded="true" signature="29:156" ph="..." />
+            <marker date="1468176436150" expanded="true" signature="158:200" ph="/**...*/" />
+            <marker date="1468176436150" expanded="true" signature="309:357" ph="{...}" />
+            <marker date="1468176436150" expanded="true" signature="410:999" ph="{...}" />
+            <marker date="1468176436150" expanded="true" signature="796:876" ph="//..." />
+            <marker date="1468176436150" expanded="true" signature="1090:2644" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackerearth/src/main/java/hiring1/index/TestClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
+          <folding>
+            <marker date="1468160291963" expanded="true" signature="51:98" ph="/**...*/" />
+            <marker date="1468160291963" expanded="true" signature="178:959" ph="{...}" />
+            <marker date="1468160291963" expanded="true" signature="1015:1409" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackerearth/src/main/java/hiring1/components/TestClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+          <folding>
+            <marker date="1468176298632" expanded="true" signature="50:97" ph="/**...*/" />
+            <marker date="1468176298632" expanded="true" signature="153:236" ph="{...}" />
+            <marker date="1468176298632" expanded="false" signature="192:207" ph=" { " />
+            <marker date="1468176298632" expanded="false" signature="220:230" ph=" }" />
+            <marker date="1468176298632" expanded="true" signature="268:622" ph="{...}" />
+            <marker date="1468176298632" expanded="true" signature="406:616" ph="{...}" />
+            <marker date="1468176298632" expanded="true" signature="667:2646" ph="{...}" />
+            <marker date="1468176298632" expanded="true" signature="852:860" ph="&lt;~&gt;" />
+            <marker date="1468176298632" expanded="true" signature="1361:1369" ph="&lt;~&gt;" />
+            <marker date="1468176298632" expanded="true" signature="1446:1455" ph="&lt;~&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17886">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
