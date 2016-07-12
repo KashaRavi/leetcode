@@ -2,8 +2,6 @@ package com.leetcode.decodeWays;
 
 import java.util.Date;
 
-import com.google.gson.Gson;
-
 /**
  * Created by rkasha on 11/2/2014.
  */
@@ -11,8 +9,6 @@ public class Solution {
 
     public static void main(String[] args){
         Date date = new Date();
-        String dateStr = new Gson().toJson(date);
-        System.out.println(dateStr);
         Solution mySoln = new Solution();
         String input = "";
         input = "10";

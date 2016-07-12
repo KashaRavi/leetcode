@@ -1,5 +1,3 @@
-package com.selenium;
-
 /**
  * @author rkasha
  */

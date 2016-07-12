@@ -1,3 +1,6 @@
 target
 .idea
 *.iml
+/.idea/workspace.xml
+LeetCodeOJ.ipr
+LeetCodeOJ.iws
