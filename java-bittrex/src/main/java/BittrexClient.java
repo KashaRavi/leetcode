@@ -20,8 +20,8 @@ import java.util.Scanner;
 import static com.sun.tools.javac.util.Constants.format;
 
 public class BittrexClient {
-    private static final String API_KEY="97867c4fe611447e90f674a1646e7eed";
-    private static final String API_SECRET ="fd15491820f44cdbb0b316d8fd0ccf9c";
+    private static final String API_KEY="";
+    private static final String API_SECRET ="";
 
     static String[] currencies = {
             "CVC", "OMG", "NEO", "STORJ", "QTUM", "PAY", "VRM", "XZC",
