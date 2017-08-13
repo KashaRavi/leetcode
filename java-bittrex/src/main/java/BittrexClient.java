@@ -20,13 +20,13 @@ import java.util.Scanner;
 import static com.sun.tools.javac.util.Constants.format;
 
 public class BittrexClient {
-    private static final String API_KEY="";
-    private static final String API_SECRET ="";
+    private static final String API_KEY="97867c4fe611447e90f674a1646e7eed";
+    private static final String API_SECRET ="fd15491820f44cdbb0b316d8fd0ccf9c";
 
     static String[] currencies = {
             "CVC", "OMG", "NEO", "STORJ", "QTUM", "PAY", "VRM", "XZC",
             "BLITZ", "FUN", "XZC", "ADX", "PART", "PTOY", "CFI", "SWT",
-            "LUN", "WAVES", "XLM", "SC", "XMY", "VOX", "STEEM", "QWARK"
+            "LUN", "WAVES", "XLM", "SC", "XMY", "VOX", "STEEM", "QWARK","SLS"
     };
 
     public static void main(String[] args)
@@ -87,7 +87,7 @@ public class BittrexClient {
             }
         case 2:
             currency = getCurrency();
-            watchMarketFor(bittrex, currency, dfTwo);
+            watchAndSellIfProfitable(bittrex, currency, spendPercent, commission, desiredProfit, dfEight, dfTwo);
             break;
         default:
             System.out.println("Option not available");
@@ -234,12 +234,10 @@ public class BittrexClient {
         return profit;
     }
 
-    private static double getExpectedNetProfit(Bittrex bittrex, String requiredIncrease, String market,
+    private static double getExpectedNetProfit(double todaysIncrease, String requiredIncrease,
             double commision, DecimalFormat dfTwo) {
 
         double desiredIncrease = Double.valueOf(requiredIncrease);
-        Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, market);
-        double todaysIncrease = getTodaysChange(marketMap);
         todaysIncrease = Double.valueOf(dfTwo.format(todaysIncrease));
 
         double t1 = 100 + todaysIncrease;
@@ -366,7 +364,7 @@ public class BittrexClient {
         System.out.format(formatter.format(requiredPercentage));
     }
 
-    private static void watchMarketFor(Bittrex bittrex, String currency, DecimalFormat dfTwo) {
+    private static void watchAndSellIfProfitable(Bittrex bittrex, String currency, double spendPercent, double commission, double minProfit, DecimalFormat dfEight, DecimalFormat dfTwo) {
         int n = 100;
         String market = "BTC-" + currency;
         LinkedList<Double> tradePriceWindow = new LinkedList<>();
@@ -416,6 +414,18 @@ public class BittrexClient {
                     market, currentWindowSize,  dfTwo.format(changeFromLastDay), changeFromPrevTrade,
                     dfTwo.format(highestPercentageInWindow), dfTwo.format(lowestPercentageInWindow),
                     currentTradePrice, prevTradePrice,highestPrice, lowestPrice, closingPrice ));
+
+            double requestedIncrease = (highestPercentageInWindow - lowestPercentageInWindow)/2;
+            if(Double.compare(highestPercentageInWindow - changeFromLastDay,requestedIncrease) >= 0) {
+                System.out.println(String.format("[%s] currently operating in the lower half of profit window", market));
+            double expectedProfit = getExpectedNetProfit(changeFromLastDay, String.valueOf(requestedIncrease), commission, dfTwo);
+            if(Double.compare(expectedProfit, minProfit) >= 0 ) {
+                buyAndSellCurrency(bittrex, currency, minProfit, spendPercent,requestedIncrease,dfEight,dfTwo,"DEMAND", commission );
+                break;
+            } else {
+                System.out.println(String.format("[%s] It is risky to trade because the expectedProfit=%s and desiredProfit=%s", market, expectedProfit, minProfit));
+            }
+            }
             try {
                 Thread.sleep(750);
             } catch (InterruptedException e) {
