@@ -49,5 +49,7 @@
         <module>javafx</module>
         <module>hackerrank</module>
         <module>git</module>
+        <module>bittrex</module>
+        <module>java-bittrex</module>
     </modules>
 </project>
