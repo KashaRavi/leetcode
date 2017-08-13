@@ -32,7 +32,7 @@ public class BittrexClient {
         dfTwo.setRoundingMode(RoundingMode.FLOOR);
 
         Bittrex bittrex = new Bittrex(1, 15);
-        bittrex.setAuthKeysFromTextFile("key.propertes");
+        bittrex.setAuthKeysFromTextFile("key.properties");
 //        callMethods(bittrex,Methods.GET_MARKETS,"");
 //        callMethods(bittrex,Methods.GET_MARKET_SUMMARIES,"");
 //        callMethods(bittrex,Methods.GET_MARKET_SUMMARY,"BTC-XMG");
