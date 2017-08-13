@@ -329,9 +329,15 @@ public class Bittrex {
 
 	private static HashMap<String, String> jsonMapToHashMap(String jsonMap) {
 
+		try {
 		final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 		return gson.fromJson(jsonMap, new TypeToken<HashMap<String, String>>(){}.getType());
+		} catch (Exception e) {
+			System.out.println(jsonMap);
+			return null;
+		}
+
 	}
 
 	private String getResponseBody(final String baseUrl) {

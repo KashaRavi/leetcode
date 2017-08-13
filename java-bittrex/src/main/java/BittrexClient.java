@@ -13,16 +13,11 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Scanner;
 
 import static com.sun.tools.javac.util.Constants.format;
 
 public class BittrexClient {
-    private static final String API_KEY="97867c4fe611447e90f674a1646e7eed";
-    private static final String API_SECRET ="fd15491820f44cdbb0b316d8fd0ccf9c";
-
     static String[] currencies = {
             "CVC", "OMG", "NEO", "STORJ", "QTUM", "PAY", "VRM", "XZC",
             "BLITZ", "FUN", "XZC", "ADX", "PART", "PTOY", "CFI", "SWT",
@@ -36,7 +31,8 @@ public class BittrexClient {
         dfEight.setRoundingMode(RoundingMode.FLOOR);
         dfTwo.setRoundingMode(RoundingMode.FLOOR);
 
-        Bittrex bittrex = new Bittrex(API_KEY, API_SECRET, 1, 15);
+        Bittrex bittrex = new Bittrex(1, 15);
+        bittrex.setAuthKeysFromTextFile("key.propertes");
 //        callMethods(bittrex,Methods.GET_MARKETS,"");
 //        callMethods(bittrex,Methods.GET_MARKET_SUMMARIES,"");
 //        callMethods(bittrex,Methods.GET_MARKET_SUMMARY,"BTC-XMG");
@@ -62,7 +58,7 @@ public class BittrexClient {
 
 
         double spendPercent = 30;
-        double desiredProfit = 1;
+        double desiredProfit =  1;
         double demandIncrease = 5;
         double commission = 0.25;
         String currency ="";
@@ -490,8 +486,8 @@ public class BittrexClient {
             double desiredProfitPercent) {
         String orderHistoryJsonStr = bittrex.getOrderHistory(market);
 
-        String marketOrderHistoryPrettyStr = Utils.prettyPrintJsonStr(orderHistoryJsonStr);
-        Utils.writeToFile(marketOrderHistoryPrettyStr,market+"_order_history");
+//        String marketOrderHistoryPrettyStr = Utils.prettyPrintJsonStr(orderHistoryJsonStr);
+//        Utils.writeToFile(marketOrderHistoryPrettyStr,market+"_order_history");
 
         List<HashMap<String, String>> orderHistoryMapsList = Bittrex.getMapsFromResponse(orderHistoryJsonStr);
         Map<String, String> mostRecentBuyOrder = getRecentBuyOrderHistory(orderHistoryMapsList);
