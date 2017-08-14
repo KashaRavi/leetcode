@@ -24,6 +24,7 @@ public class BittrexClient {
             "LUN", "WAVES", "XLM", "SC", "XMY", "VOX", "STEEM", "QWARK",
             "SLS", "PART"
     };
+public static int SATOSHI_CONST = 100000000;
 
     public static void main(String[] args)
     {
@@ -385,39 +386,42 @@ public class BittrexClient {
         MinMaxPriorityQueue<Double> pq = MinMaxPriorityQueue.create();
 
         Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, market);
-        double basePrice = Double.valueOf(marketMap.get("PrevDay")) * 100000000;
+        double basePriceInBtc = Double.valueOf(marketMap.get("PrevDay"));
+        double basePriceInSatoshi = basePriceInBtc * SATOSHI_CONST;
 
         while (true) {
             marketMap = getCurrentViewOfMarket(bittrex, market);
 
-            double recentTradePrice = 0;
+            double recentTradePriceInSatoshi = 0;
+            double recentTradePriceInBtc =0;
             try {
-             recentTradePrice = Double.valueOf(marketMap.get("Last")) * 100000000;
+             recentTradePriceInBtc = Double.valueOf(marketMap.get("Last"));
+             recentTradePriceInSatoshi =  recentTradePriceInBtc * SATOSHI_CONST;
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Caught Exception while getting last traded price. Continuing with next iteration...");
                 continue;
             }
 
-            double prevTradePriceInQ = recentTradePrice;
+            double prevTradePriceInQ = recentTradePriceInSatoshi;
 
             int currentWindowSize = tradePriceWindow.size();
             if (currentWindowSize == 0) {
-                tradePriceWindow.add(recentTradePrice);
-                pq.add(recentTradePrice);
+                tradePriceWindow.add(recentTradePriceInSatoshi);
+                pq.add(recentTradePriceInSatoshi);
             } else {
 
                 prevTradePriceInQ = tradePriceWindow.peekLast();
 
-                if (Double.compare(recentTradePrice, prevTradePriceInQ) != 0) {
+                if (Double.compare(recentTradePriceInSatoshi, prevTradePriceInQ) != 0) {
                     if (currentWindowSize == n) {
                         double firstTradeInWindow = tradePriceWindow.remove();
                         if (!pq.remove(firstTradeInWindow)) {
                             System.out.println("remove Failed");
                         }
                     }
-                    tradePriceWindow.add(recentTradePrice);
-                    pq.add(recentTradePrice);
+                    tradePriceWindow.add(recentTradePriceInSatoshi);
+                    pq.add(recentTradePriceInSatoshi);
                 }
             }
 
@@ -425,20 +429,20 @@ public class BittrexClient {
             if (currentWindowSize != pq.size()) {
                 System.out.println("size not matching .........");
             }
-            double changeFromLastDay = ((recentTradePrice - basePrice) / basePrice) * 100;
+            double changeFromLastDay = ((recentTradePriceInSatoshi - basePriceInSatoshi) / basePriceInSatoshi) * 100;
             double changeFromPrevTrade =
-                    ((recentTradePrice - prevTradePriceInQ) / basePrice) * 100;
-            double highestPrice = pq.peekLast();
-            double highestPercentageInWindow = ((highestPrice - basePrice) / basePrice) * 100;
-            double lowestPrice = pq.peekFirst();
-            double lowestPercentageInWindow = ((lowestPrice - basePrice) / basePrice) * 100;
+                    ((recentTradePriceInSatoshi - prevTradePriceInQ) / basePriceInSatoshi) * 100;
+            double highestPriceInSatoshi = pq.peekLast();
+            double highestPercentageInWindow = ((highestPriceInSatoshi - basePriceInSatoshi) / basePriceInSatoshi) * 100;
+            double lowestPriceInSatoshi = pq.peekFirst();
+            double lowestPercentageInWindow = ((lowestPriceInSatoshi - basePriceInSatoshi) / basePriceInSatoshi) * 100;
 
             //            System.out.print("\r");
             System.out.println(String.format(
                     "[%s] Window Size = %s, From closing price = %s%%. From last trade = %s%%\t\t\t. Highest=%s%%. Lowest=%s%%. currentTradePrice=%s. prevTradePrice=%s. HighestPrice=%s. LowestPrice=%s. closingPrice=%s",
                     market, currentWindowSize, dfTwo.format(changeFromLastDay), changeFromPrevTrade,
                     dfTwo.format(highestPercentageInWindow), dfTwo.format(lowestPercentageInWindow),
-                    recentTradePrice, prevTradePriceInQ, highestPrice, lowestPrice, basePrice));
+                    recentTradePriceInSatoshi, prevTradePriceInQ, highestPriceInSatoshi, lowestPriceInSatoshi, basePriceInSatoshi));
 
             double requestedIncrease = (highestPercentageInWindow - lowestPercentageInWindow) / 2;
             if (Double.compare(highestPercentageInWindow - changeFromLastDay, requestedIncrease)
@@ -450,7 +454,7 @@ public class BittrexClient {
                         String.valueOf(requestedIncrease), commission, dfTwo);
                 if (Double.compare(expectedProfit, minProfit) >= 0) {
                     buyAndSellCurrency(bittrex, currency, spendPercent, minProfit,
-                            requestedIncrease, dfEight, dfTwo, "DEMAND", recentTradePrice, basePrice, commission);
+                            requestedIncrease, dfEight, dfTwo, "DEMAND", recentTradePriceInBtc, basePriceInBtc, commission);
                     break;
                 } else {
                     System.out.println(String.format(
