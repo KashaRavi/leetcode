@@ -21,7 +21,8 @@ public class BittrexClient {
     static String[] currencies = {
             "CVC", "OMG", "NEO", "STORJ", "QTUM", "PAY", "VRM", "XZC",
             "BLITZ", "FUN", "XZC", "ADX", "PART", "PTOY", "CFI", "SWT",
-            "LUN", "WAVES", "XLM", "SC", "XMY", "VOX", "STEEM", "QWARK","SLS"
+            "LUN", "WAVES", "XLM", "SC", "XMY", "VOX", "STEEM", "QWARK",
+            "SLS", "PART"
     };
 
     public static void main(String[] args)
@@ -58,7 +59,7 @@ public class BittrexClient {
 
 
         double spendPercent = 30;
-        double desiredProfit =  1;
+        double minDesiredProfit =  1;
         double demandIncrease = 5;
         double commission = 0.25;
         String currency ="";
@@ -73,22 +74,38 @@ public class BittrexClient {
         switch (option) {
         case 0:
             currency = getCurrency();
-            sellCurrency(desiredProfit, currency, bittrex, dfTwo);
+            sellCurrency(minDesiredProfit, currency, bittrex, dfTwo);
             break;
         case 1:
             while (true) {
                 currency = getCurrency();
-                buyAndSellCurrency(bittrex, currency, spendPercent, desiredProfit, demandIncrease,
-                        dfEight, dfTwo, "DEMAND", commission);
+                validateSpendPercent(spendPercent,currency);
+
+                Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, "BTC-"+currency);
+                double lastTradedPrice = Double.valueOf(marketMap.get("Last"));
+                double basePrice = Double.valueOf(marketMap.get("PrevDay"));
+
+                buyAndSellCurrency(bittrex, currency, spendPercent, minDesiredProfit, demandIncrease,
+                        dfEight, dfTwo, "DEMAND", lastTradedPrice, basePrice, commission);
             }
         case 2:
             currency = getCurrency();
-            watchAndSellIfProfitable(bittrex, currency, spendPercent, commission, desiredProfit, dfEight, dfTwo);
+            validateSpendPercent(spendPercent,currency);
+            watchAndSellIfProfitable(bittrex, currency, spendPercent, commission, minDesiredProfit, dfEight, dfTwo);
             break;
         default:
             System.out.println("Option not available");
             break;
         }
+    }
+    private static void validateSpendPercent(double spendpercent, String currency) {
+        System.out.println(String.format("Do u want to spend %s%% of available BTC on %s.", spendpercent, currency));
+        System.out.print("Press -1 to continue. Press any other number to exit:");
+        Scanner in = new Scanner(System.in);
+         int option = in.nextInt();
+         if(option != -1) {
+             System.exit(0);
+         }
     }
 
     private static int getOption(String[] options) {
@@ -112,17 +129,14 @@ public class BittrexClient {
     }
 
     private static void buyAndSellCurrency(Bittrex bittrex, String currency, double spendPercent, double desiredProfit,
-            double demandIncrease, DecimalFormat dfEight, DecimalFormat dfTwo, String base,
-            double commission) {
+            double demandIncrease, DecimalFormat dfEight, DecimalFormat dfTwo, String factor, double lastTradedPrice,
+            double basePrice, double commission) {
 
         String market = "BTC-" + currency;
 
-        Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, market);
-        double prevDayPrice = Double.valueOf(marketMap.get("PrevDay"));
+        double change = ((lastTradedPrice - basePrice)/basePrice)*100;
 
-        double lastTradedPrice = Double.valueOf(marketMap.get("Last"));
-        double change = ((lastTradedPrice - prevDayPrice)/prevDayPrice)*100;
-        System.out.println(String.format("%s is trading at %s pecent higher than previos day",market, change));
+        System.out.println(String.format("%s is trading at %s pecent higher than base price",market, change));
 
         double buyPrice = 0;
         double buyQuantity = 0;
@@ -134,18 +148,18 @@ public class BittrexClient {
 
         buyQuantity = getBuyQuantity(dfEight, commission, buyPrice, tradingBtcAmount);
 
-        change = ((buyPrice - prevDayPrice)/prevDayPrice)*100;
+        change = ((buyPrice - basePrice)/basePrice)*100;
         System.out.println(String.format("[%s] Placing buy order to execute when the market reaches %s",market, change));
         placeBuyOrderAndWait(bittrex, dfEight, currency, market, buyPrice, buyQuantity);
 
         String sellPrice = "";
-        if (base.equals("DEMAND")) {
-            sellPrice = getDesiredSellPrice(bittrex, market, buyPrice, prevDayPrice, demandIncrease, dfEight);
+        if (factor.equals("DEMAND")) {
+            sellPrice = getDesiredSellPrice(buyPrice, basePrice, demandIncrease, dfEight);
         } else {
             sellPrice = getDesiredSellPrice(bittrex, market, desiredProfit);
         }
 
-        change = ((Double.valueOf(sellPrice) - prevDayPrice)/prevDayPrice)*100;
+        change = ((Double.valueOf(sellPrice) - basePrice)/basePrice)*100;
         System.out.println(String.format("[%s] Placing sell order to execute when the market reaches %s",market, change));
         String sellQuantity = getSellQuantity(bittrex, currency);
 
@@ -181,8 +195,7 @@ public class BittrexClient {
         double availableBTCForTrading = tradingBtcAmount * (1 - commission/100);
 
         availableBTCForTrading = Double.valueOf(dfEight.format(availableBTCForTrading));
-
-        buyQuantity = getBidQuantity(availableBTCForTrading, buyPrice);
+        buyQuantity = availableBTCForTrading/buyPrice;
         return buyQuantity;
     }
 
@@ -360,67 +373,79 @@ public class BittrexClient {
         System.out.format(formatter.format(requiredPercentage));
     }
 
-    private static void watchAndSellIfProfitable(Bittrex bittrex, String currency, double spendPercent, double commission, double minProfit, DecimalFormat dfEight, DecimalFormat dfTwo) {
-        int n = 100;
+    private static void watchAndSellIfProfitable(Bittrex bittrex, String currency,
+            double spendPercent, double commission, double minProfit, DecimalFormat dfEight,
+            DecimalFormat dfTwo) {
+        int n = 1000;
         String market = "BTC-" + currency;
         LinkedList<Double> tradePriceWindow = new LinkedList<>();
         MinMaxPriorityQueue<Double> pq = MinMaxPriorityQueue.create();
 
-        while (true) {
-            Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, market);
-            double currentTradePrice = Double.valueOf(marketMap.get("Last"))*100000000;
-            double closingPrice = Double.valueOf(marketMap.get("PrevDay"))*100000000;
+        Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, market);
+        double basePrice = Double.valueOf(marketMap.get("PrevDay")) * 100000000;
 
-            double prevTradePrice = currentTradePrice;
+        while (true) {
+            marketMap = getCurrentViewOfMarket(bittrex, market);
+            double recentTradePrice = Double.valueOf(marketMap.get("Last")) * 100000000;
+
+            double prevTradePriceInQ = recentTradePrice;
 
             int currentWindowSize = tradePriceWindow.size();
-            if(currentWindowSize ==0){
-                tradePriceWindow.add(currentTradePrice);
-                pq.add(currentTradePrice);
+            if (currentWindowSize == 0) {
+                tradePriceWindow.add(recentTradePrice);
+                pq.add(recentTradePrice);
             } else {
 
-                prevTradePrice = tradePriceWindow.peekLast();
+                prevTradePriceInQ = tradePriceWindow.peekLast();
 
-                if (Double.compare(currentTradePrice, prevTradePrice) != 0) {
+                if (Double.compare(recentTradePrice, prevTradePriceInQ) != 0) {
                     if (currentWindowSize == n) {
                         double firstTradeInWindow = tradePriceWindow.remove();
-                        if(!pq.remove(firstTradeInWindow)) {
+                        if (!pq.remove(firstTradeInWindow)) {
                             System.out.println("remove Failed");
                         }
                     }
-                    tradePriceWindow.add(currentTradePrice);
-                    pq.add(currentTradePrice);
+                    tradePriceWindow.add(recentTradePrice);
+                    pq.add(recentTradePrice);
                 }
             }
 
-
             currentWindowSize = tradePriceWindow.size();
-            if(currentWindowSize != pq.size()) {
+            if (currentWindowSize != pq.size()) {
                 System.out.println("size not matching .........");
             }
-            double changeFromLastDay = ((currentTradePrice - closingPrice)/closingPrice)*100;
-            double changeFromPrevTrade = ((currentTradePrice - prevTradePrice )/closingPrice)*100;
+            double changeFromLastDay = ((recentTradePrice - basePrice) / basePrice) * 100;
+            double changeFromPrevTrade =
+                    ((recentTradePrice - prevTradePriceInQ) / basePrice) * 100;
             double highestPrice = pq.peekLast();
-            double highestPercentageInWindow = (( highestPrice - closingPrice)/closingPrice)*100;
+            double highestPercentageInWindow = ((highestPrice - basePrice) / basePrice) * 100;
             double lowestPrice = pq.peekFirst();
-            double lowestPercentageInWindow = ((lowestPrice - closingPrice)/closingPrice)*100;
+            double lowestPercentageInWindow = ((lowestPrice - basePrice) / basePrice) * 100;
 
-//            System.out.print("\r");
-            System.out.println(String.format("[%s] Window Size = %s, From closing price = %s%%. From last trade = %s%%\t\t\t. Highest=%s%%. Lowest=%s%%. currentTradePrice=%s. prevTradePrice=%s. HighestPrice=%s. LowestPrice=%s. closingPrice=%s",
-                    market, currentWindowSize,  dfTwo.format(changeFromLastDay), changeFromPrevTrade,
+            //            System.out.print("\r");
+            System.out.println(String.format(
+                    "[%s] Window Size = %s, From closing price = %s%%. From last trade = %s%%\t\t\t. Highest=%s%%. Lowest=%s%%. currentTradePrice=%s. prevTradePrice=%s. HighestPrice=%s. LowestPrice=%s. closingPrice=%s",
+                    market, currentWindowSize, dfTwo.format(changeFromLastDay), changeFromPrevTrade,
                     dfTwo.format(highestPercentageInWindow), dfTwo.format(lowestPercentageInWindow),
-                    currentTradePrice, prevTradePrice,highestPrice, lowestPrice, closingPrice ));
+                    recentTradePrice, prevTradePriceInQ, highestPrice, lowestPrice, basePrice));
 
-            double requestedIncrease = (highestPercentageInWindow - lowestPercentageInWindow)/2;
-            if(Double.compare(highestPercentageInWindow - changeFromLastDay,requestedIncrease) >= 0) {
-                System.out.println(String.format("[%s] currently operating in the lower half of profit window", market));
-            double expectedProfit = getExpectedNetProfit(changeFromLastDay, String.valueOf(requestedIncrease), commission, dfTwo);
-            if(Double.compare(expectedProfit, minProfit) >= 0 ) {
-                buyAndSellCurrency(bittrex, currency, minProfit, spendPercent,requestedIncrease,dfEight,dfTwo,"DEMAND", commission );
-                break;
-            } else {
-                System.out.println(String.format("[%s] It is risky to trade because the expectedProfit=%s and desiredProfit=%s", market, expectedProfit, minProfit));
-            }
+            double requestedIncrease = (highestPercentageInWindow - lowestPercentageInWindow) / 2;
+            if (Double.compare(highestPercentageInWindow - changeFromLastDay, requestedIncrease)
+                    >= 0) {
+                System.out.println(
+                        String.format("[%s] currently operating in the lower half of profit window",
+                                market));
+                double expectedProfit = getExpectedNetProfit(changeFromLastDay,
+                        String.valueOf(requestedIncrease), commission, dfTwo);
+                if (Double.compare(expectedProfit, minProfit) >= 0) {
+                    buyAndSellCurrency(bittrex, currency, minProfit, spendPercent,
+                            requestedIncrease, dfEight, dfTwo, "DEMAND", recentTradePrice, basePrice, commission);
+                    break;
+                } else {
+                    System.out.println(String.format(
+                            "[%s] It is risky to trade because the expectedProfit=%s and desiredProfit=%s",
+                            market, expectedProfit, minProfit));
+                }
             }
             try {
                 Thread.sleep(750);
@@ -473,11 +498,9 @@ public class BittrexClient {
         return balanceMap.get("Available");
     }
 
-    private static String getDesiredSellPrice(Bittrex bittrex, String market,
-            double buyPrice, double prevDayClosingPrice, double desiredDemandIncrease, DecimalFormat df) {
+    private static String getDesiredSellPrice(double buyPrice, double basePrice, double desiredDemandIncrease, DecimalFormat df) {
 
-
-        double sellPrice = buyPrice + prevDayClosingPrice * desiredDemandIncrease/100;
+        double sellPrice = buyPrice + basePrice * desiredDemandIncrease/100;
         return df.format(sellPrice);
 
     }
