@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -18,13 +19,8 @@ import java.util.Scanner;
 import static com.sun.tools.javac.util.Constants.format;
 
 public class BittrexClient {
-    static String[] currencies = {
-            "CVC", "OMG", "NEO", "STORJ", "QTUM", "PAY", "VRM", "XZC",
-            "BLITZ", "FUN", "XZC", "ADX", "PART", "PTOY", "CFI", "SWT",
-            "LUN", "WAVES", "XLM", "SC", "XMY", "VOX", "STEEM", "QWARK",
-            "SLS", "PART"
-    };
-public static int SATOSHI_CONST = 100000000;
+    public static int SATOSHI_CONST = 100000000;
+    static List<String> currencies = new ArrayList<>();
 
     public static void main(String[] args)
     {
@@ -58,8 +54,8 @@ public static int SATOSHI_CONST = 100000000;
         //        String currency = "";
 
 
-
-        double spendPercent = 30;
+        Utils.loadCurrencies("currencies.txt", currencies);
+        double spendPercent = 20;
         double minDesiredProfit =  1;
         double demandIncrease = 5;
         double commission = 0.25;
@@ -70,6 +66,7 @@ public static int SATOSHI_CONST = 100000000;
                 "buy and sell currency",
                 "watch market"
         };
+
 
         int option = getOption(options);
         switch (option) {
@@ -119,14 +116,14 @@ public static int SATOSHI_CONST = 100000000;
     }
 
     private static String getCurrency() {
-        for (int i = 0; i < currencies.length; i++) {
-            System.out.println(String.format("[ %s ] -> [ %s ]", i, currencies[i]));
+        for (int i = 0; i < currencies.size(); i++) {
+            System.out.println(String.format("[ %s ] -> [ %s ]", i, currencies.get(i)));
         }
         System.out.print("\nEnter currency No:");
         Scanner in = new Scanner(System.in);
         int index = in.nextInt();
 
-        return currencies[index];
+        return currencies.get(index);
     }
 
     private static void buyAndSellCurrency(Bittrex bittrex, String currency, double spendPercent, double desiredProfit,

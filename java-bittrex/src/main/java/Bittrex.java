@@ -73,7 +73,7 @@ public class Bittrex {
 		return getJson(API_VERSION, PUBLIC, "getmarkets");
 	}
 
-	public String getCurrencies() { // Returns all currencies currently on Bittrex with their metadata
+	public String getCurrencies() { // Returns all currencies.txt currently on Bittrex with their metadata
 
 		return getJson(API_VERSION, PUBLIC, "getcurrencies");
 	}

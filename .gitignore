@@ -4,4 +4,4 @@ target
 LeetCodeOJ.ipr
 LeetCodeOJ.iws
 animation/
-java-bittrex/src/main/resources/
+java-bittrex/src/main/resources/key.properties

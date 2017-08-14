@@ -6,6 +6,8 @@ import com.google.gson.JsonParser;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
 
 public class Utils {
 
@@ -40,6 +42,19 @@ public class Utils {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        }
+    }
+
+    public static void loadCurrencies(String textFile, List<String> currencies) {
+
+        try (Scanner scan = new Scanner(Bittrex.class.getResourceAsStream(textFile))) {
+            while(scan.hasNextLine()){
+                String currency = scan.nextLine();
+                currencies.add(currency);
+            }
+        } catch (NullPointerException | IndexOutOfBoundsException e) {
+
+            System.err.println("Currencies file not found or corrupted.");
         }
     }
 }
