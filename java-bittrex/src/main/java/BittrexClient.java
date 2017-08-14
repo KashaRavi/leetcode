@@ -129,7 +129,7 @@ public class BittrexClient {
     }
 
     private static void buyAndSellCurrency(Bittrex bittrex, String currency, double spendPercent, double desiredProfit,
-            double demandIncrease, DecimalFormat dfEight, DecimalFormat dfTwo, String factor, double lastTradedPrice,
+            double demandIncrease, DecimalFormat dfEight, DecimalFormat dfTwo, String tradeCriteria, double lastTradedPrice,
             double basePrice, double commission) {
 
         String market = "BTC-" + currency;
@@ -144,23 +144,26 @@ public class BittrexClient {
         buyPrice = getBidRate(bittrex, market, dfEight);
 
         double totalBtcAmount = getAvailableBTC(bittrex);
-        double tradingBtcAmount = totalBtcAmount * spendPercent / 100;
+        double totalBTCInvestment = totalBtcAmount * spendPercent / 100;
 
-        buyQuantity = getBuyQuantity(dfEight, commission, buyPrice, tradingBtcAmount);
+        buyQuantity = getBuyQuantity(dfEight, commission, buyPrice, totalBTCInvestment);
 
-        change = ((buyPrice - basePrice)/basePrice)*100;
-        System.out.println(String.format("[%s] Placing buy order to execute when the market reaches %s",market, change));
+        change = ((buyPrice - basePrice) / basePrice) * 100;
+        System.out.println(String.format("[%s] Placing buy order to execute when the market reaches %s",
+                        market, change));
         placeBuyOrderAndWait(bittrex, dfEight, currency, market, buyPrice, buyQuantity);
 
         String sellPrice = "";
-        if (factor.equals("DEMAND")) {
+        if (tradeCriteria.equals("DEMAND")) {
             sellPrice = getDesiredSellPrice(buyPrice, basePrice, demandIncrease, dfEight);
         } else {
             sellPrice = getDesiredSellPrice(bittrex, market, desiredProfit);
         }
 
         change = ((Double.valueOf(sellPrice) - basePrice)/basePrice)*100;
+
         System.out.println(String.format("[%s] Placing sell order to execute when the market reaches %s",market, change));
+
         String sellQuantity = getSellQuantity(bittrex, currency);
 
         placeSellOrder(bittrex, market, currency, sellPrice, sellQuantity);
@@ -190,12 +193,12 @@ public class BittrexClient {
 
 
     private static double getBuyQuantity(DecimalFormat dfEight, double commission, double buyPrice,
-            double tradingBtcAmount) {
+            double totalBtcInvestment) {
         double buyQuantity;
-        double availableBTCForTrading = tradingBtcAmount * (1 - commission/100);
+        double tradingBTCAmount = totalBtcInvestment * (1 - commission/100);
 
-        availableBTCForTrading = Double.valueOf(dfEight.format(availableBTCForTrading));
-        buyQuantity = availableBTCForTrading/buyPrice;
+        tradingBTCAmount = Double.valueOf(dfEight.format(tradingBTCAmount));
+        buyQuantity = tradingBTCAmount/buyPrice;
         return buyQuantity;
     }
 
@@ -386,7 +389,15 @@ public class BittrexClient {
 
         while (true) {
             marketMap = getCurrentViewOfMarket(bittrex, market);
-            double recentTradePrice = Double.valueOf(marketMap.get("Last")) * 100000000;
+
+            double recentTradePrice = 0;
+            try {
+             recentTradePrice = Double.valueOf(marketMap.get("Last")) * 100000000;
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Caught Exception while getting last traded price. Continuing with next iteration...");
+                continue;
+            }
 
             double prevTradePriceInQ = recentTradePrice;
 
@@ -438,7 +449,7 @@ public class BittrexClient {
                 double expectedProfit = getExpectedNetProfit(changeFromLastDay,
                         String.valueOf(requestedIncrease), commission, dfTwo);
                 if (Double.compare(expectedProfit, minProfit) >= 0) {
-                    buyAndSellCurrency(bittrex, currency, minProfit, spendPercent,
+                    buyAndSellCurrency(bittrex, currency, spendPercent, minProfit,
                             requestedIncrease, dfEight, dfTwo, "DEMAND", recentTradePrice, basePrice, commission);
                     break;
                 } else {
