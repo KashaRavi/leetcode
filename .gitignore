@@ -5,3 +5,4 @@ LeetCodeOJ.ipr
 LeetCodeOJ.iws
 animation/
 java-bittrex/src/main/resources/key.properties
+java-bittrex/data/

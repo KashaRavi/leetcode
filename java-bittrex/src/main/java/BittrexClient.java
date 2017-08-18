@@ -119,7 +119,7 @@ public class BittrexClient {
 
     private static String getCurrency() {
         for (int i = 0; i < currencies.size(); i++) {
-            System.out.println(String.format("[ %s ] -> [ %s ]", i, currencies.get(i)));
+            System.out.println(String.format("[ %s\t]->[ %s ]", currencies.get(i), i));
         }
         System.out.print("\nEnter currency No:");
         Scanner in = new Scanner(System.in);
