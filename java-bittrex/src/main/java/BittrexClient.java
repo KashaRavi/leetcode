@@ -55,10 +55,12 @@ public class BittrexClient {
 
 
         Utils.loadCurrencies("currencies.txt", currencies);
-        double spendPercent = 100;
-        double minDesiredProfit =  1;
-        double demandIncrease = 5;
-        double commission = 0.25;
+        Map<String, String> customProperties = new HashMap<>();
+        Utils.loadCustomProperties("config.txt",customProperties);
+        double spendPercent = Double.valueOf(customProperties.get("btc.spendPercent"));
+        double minDesiredProfit =  Double.valueOf(customProperties.get("btc.minDesiredProfit"));
+        double demandIncrease = Double.valueOf(customProperties.get("btc.demandIncrease"));
+        double commission = Double.valueOf(customProperties.get("btc.commission"));
         String currency ="";
 
         String[] options = {
@@ -89,7 +91,7 @@ public class BittrexClient {
         case 2:
             currency = getCurrency();
             validateSpendPercent(spendPercent,currency);
-            watchAndSellIfProfitable(bittrex, currency, spendPercent, commission, minDesiredProfit, dfEight, dfTwo);
+            watchAndSellIfProfitable(bittrex, currency, spendPercent, commission, minDesiredProfit, dfEight, dfTwo, customProperties);
             break;
         default:
             System.out.println("Option not available");
@@ -376,10 +378,11 @@ public class BittrexClient {
 
     private static void watchAndSellIfProfitable(Bittrex bittrex, String currency,
             double spendPercent, double commission, double minProfit, DecimalFormat dfEight,
-            DecimalFormat dfTwo) {
-        double tolerance = 10;
-        int minTradesToUnderstandVolatility = 10;
-        int n = 1000;
+            DecimalFormat dfTwo, Map<String, String> customProperties) {
+
+        double tolerance = Double.valueOf(customProperties.get("btc.tolerance"));
+        int n = Integer.valueOf(customProperties.get("btc.queueSize"));
+
         String market = "BTC-" + currency;
         LinkedList<Double> tradePriceWindow = new LinkedList<>();
         MinMaxPriorityQueue<Double> pq = MinMaxPriorityQueue.create();
