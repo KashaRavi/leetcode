@@ -55,7 +55,7 @@ public class BittrexClient {
 
 
         Utils.loadCurrencies("currencies.txt", currencies);
-        double spendPercent = 20;
+        double spendPercent = 100;
         double minDesiredProfit =  1;
         double demandIncrease = 5;
         double commission = 0.25;
@@ -377,6 +377,8 @@ public class BittrexClient {
     private static void watchAndSellIfProfitable(Bittrex bittrex, String currency,
             double spendPercent, double commission, double minProfit, DecimalFormat dfEight,
             DecimalFormat dfTwo) {
+        double tolerance = 10;
+        int minTradesToUnderstandVolatility = 10;
         int n = 1000;
         String market = "BTC-" + currency;
         LinkedList<Double> tradePriceWindow = new LinkedList<>();
@@ -384,6 +386,7 @@ public class BittrexClient {
 
         Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, market);
         double basePriceInBtc = Double.valueOf(marketMap.get("PrevDay"));
+        double initialTradePriceInBtc = Double.valueOf(marketMap.get("Last"));
         double basePriceInSatoshi = basePriceInBtc * SATOSHI_CONST;
 
         while (true) {
@@ -441,22 +444,31 @@ public class BittrexClient {
                     dfTwo.format(highestPercentageInWindow), dfTwo.format(lowestPercentageInWindow),
                     recentTradePriceInSatoshi, prevTradePriceInQ, highestPriceInSatoshi, lowestPriceInSatoshi, basePriceInSatoshi));
 
+            if(Double.compare((((initialTradePriceInBtc - recentTradePriceInBtc) * 100)/basePriceInBtc),tolerance) >= 0) {
+                System.out.println(String.format("[%s] current trading price is down by %s%% from the initial observed price. Quitting the trade....", market, tolerance));
+                break;
+            }
             double requestedIncrease = (highestPercentageInWindow - lowestPercentageInWindow) / 2;
             if (Double.compare(highestPercentageInWindow - changeFromLastDay, requestedIncrease)
                     >= 0) {
                 System.out.println(
                         String.format("[%s] currently operating in the lower half of profit window",
                                 market));
-                double expectedProfit = getExpectedNetProfit(changeFromLastDay,
+                double achievableProfit = getExpectedNetProfit(changeFromLastDay,
                         String.valueOf(requestedIncrease), commission, dfTwo);
-                if (Double.compare(expectedProfit, minProfit) >= 0) {
-                    buyAndSellCurrency(bittrex, currency, spendPercent, minProfit,
-                            requestedIncrease, dfEight, dfTwo, "DEMAND", recentTradePriceInBtc, basePriceInBtc, commission);
+                if (Double.compare(achievableProfit, minProfit) >= 0) {
+                    if (Double.compare(changeFromPrevTrade, 0) > 0){
+                        buyAndSellCurrency(bittrex, currency, spendPercent, minProfit,
+                                requestedIncrease, dfEight, dfTwo, "DEMAND", recentTradePriceInBtc,
+                                basePriceInBtc, commission);
                     break;
                 } else {
+                        System.out.println(String.format("[%s] Minimum Profit is realizable at the current trade price of %s. But the market is not moving up. Conntinuing the watch...", market, recentTradePriceInBtc));
+                    }
+                } else {
                     System.out.println(String.format(
-                            "[%s] It is risky to trade because the expectedProfit=%s and desiredProfit=%s",
-                            market, expectedProfit, minProfit));
+                            "[%s] It is too risky to trade because minimum desired profit is not achievable with the observed volatility. achievable profit=%s. minimum desired profit=%s",
+                            market, achievableProfit, minProfit));
                 }
             }
             try {

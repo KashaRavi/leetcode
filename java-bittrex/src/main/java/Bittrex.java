@@ -305,7 +305,11 @@ public class Bittrex {
 
 		if(!response.contains("[")) {
 
-			maps.add(jsonMapToHashMap(response.substring(response.lastIndexOf("\"result\":") + "\"result\":".length(), response.indexOf("}") + 1))); // Sorry.
+			try {
+				maps.add(jsonMapToHashMap(response.substring(response.lastIndexOf("\"result\":") + "\"result\":".length(), response.indexOf("}") + 1))); // Sorry.
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		} else {
 
