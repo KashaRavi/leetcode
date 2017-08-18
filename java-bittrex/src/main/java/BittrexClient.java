@@ -16,8 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import static com.sun.tools.javac.util.Constants.format;
-
 public class BittrexClient {
     public static int SATOSHI_CONST = 100000000;
     static List<String> currencies = new ArrayList<>();
@@ -118,8 +116,11 @@ public class BittrexClient {
     }
 
     private static String getCurrency() {
+        int j=0;
         for (int i = 0; i < currencies.size(); i++) {
-            System.out.println(String.format("[ %s\t]->[ %s ]", currencies.get(i), i));
+            String separator =j<5 ?"\t\t\t":"\n";
+            j = j<5?++j:0;
+            System.out.print(String.format("%s:%s%s", i, currencies.get(i), separator));
         }
         System.out.print("\nEnter currency No:");
         Scanner in = new Scanner(System.in);
