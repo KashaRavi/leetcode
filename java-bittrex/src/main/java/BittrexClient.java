@@ -83,8 +83,15 @@ public class BittrexClient {
                 double lastTradedPrice = Double.valueOf(marketMap.get("Last"));
                 double basePrice = Double.valueOf(marketMap.get("PrevDay"));
 
+                String market = "BTC-"+currency;
+                JsonObject resultJsonObject = getOrderBookJson(bittrex, market, "both");
+                JsonArray buyOrders = getOrdersByType(resultJsonObject, "buy");
+
+                double bidPrice = getHighestRate(buyOrders);
+                double buyPrice = bidPrice + 0.00000001;
+
                 buyAndSellCurrency(bittrex, currency, spendPercent, minDesiredProfit, demandIncrease,
-                        dfEight, dfTwo, "DEMAND", lastTradedPrice, basePrice, commission);
+                        dfEight, dfTwo, "DEMAND", lastTradedPrice, basePrice, buyPrice, commission);
             }
         case 2:
             currency = getCurrency();
@@ -117,10 +124,11 @@ public class BittrexClient {
 
     private static String getCurrency() {
         int j=0;
+        int rowSize = 6;
         for (int i = 0; i < currencies.size(); i++) {
-            String separator =j<5 ?"\t\t\t":"\n";
-            j = j<5?++j:0;
-            System.out.print(String.format("%s:%s%s", i, currencies.get(i), separator));
+            String separator =j<rowSize ?"\t":"\n";
+            j = j<rowSize?++j:0;
+            System.out.print(String.format("[ %2s:%-5s ]%s", i, currencies.get(i), separator));
         }
         System.out.print("\nEnter currency No:");
         Scanner in = new Scanner(System.in);
@@ -131,7 +139,7 @@ public class BittrexClient {
 
     private static void buyAndSellCurrency(Bittrex bittrex, String currency, double spendPercent, double desiredProfit,
             double demandIncrease, DecimalFormat dfEight, DecimalFormat dfTwo, String tradeCriteria, double lastTradedPrice,
-            double basePrice, double commission) {
+            double basePrice, double buyPrice, double commission) {
 
         String market = "BTC-" + currency;
 
@@ -139,15 +147,11 @@ public class BittrexClient {
 
         System.out.println(String.format("%s is trading at %s pecent higher than base price",market, change));
 
-        double buyPrice = 0;
-        double buyQuantity = 0;
-
-        buyPrice = getBidRate(bittrex, market, dfEight);
 
         double totalBtcAmount = getAvailableBTC(bittrex);
         double totalBTCInvestment = totalBtcAmount * spendPercent / 100;
 
-        buyQuantity = getBuyQuantity(dfEight, commission, buyPrice, totalBTCInvestment);
+        double buyQuantity = getBuyQuantity(dfEight, commission, buyPrice, totalBTCInvestment);
 
         change = ((buyPrice - basePrice) / basePrice) * 100;
         System.out.println(String.format("[%s] Placing buy order to execute when the market reaches %s",
@@ -319,26 +323,21 @@ public class BittrexClient {
         return availableBTC;
     }
 
-    private static double getBidRate(Bittrex bittrex, String market, DecimalFormat df) {
-        double bidRate = getHighestBidRate(bittrex,market,"both");
-        bidRate = Double.valueOf(df.format(bidRate));
-        bidRate = bidRate + 0.00000001;
-        return bidRate;
+    private static double getHighestRate(JsonArray buyOrders) {
+        JsonObject buyOrderJsonObject = buyOrders.get(0).getAsJsonObject();
+        double quantity = buyOrderJsonObject.get("Quantity").getAsDouble();
+        return buyOrderJsonObject.get("Rate").getAsDouble();
     }
 
+    private static JsonArray getOrdersByType(JsonObject resultJsonObject, String type) {
+        return resultJsonObject.getAsJsonArray(type);
+    }
 
-
-    private static double getHighestBidRate(Bittrex bittrex, String market, String type) {
+    private static JsonObject getOrderBookJson(Bittrex bittrex, String market, String type) {
         String marketOrderBookJsonStr = bittrex.getOrderBook(market, type);
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(marketOrderBookJsonStr, JsonObject.class);
-        JsonObject resultJsonObject = jsonObject.get("result").getAsJsonObject();
-        JsonArray buyOrders = resultJsonObject.getAsJsonArray("buy");
-
-        JsonObject buyOrderJsonObject = buyOrders.get(0).getAsJsonObject();
-        double quantity = buyOrderJsonObject.get("Quantity").getAsDouble();
-        double rate = buyOrderJsonObject.get("Rate").getAsDouble();
-        return rate;
+        return jsonObject.get("result").getAsJsonObject();
     }
 
     private static void callMethods(Bittrex bittrex, Methods method, String input1) {
@@ -383,6 +382,7 @@ public class BittrexClient {
 
         double tolerance = Double.valueOf(customProperties.get("btc.tolerance"));
         int n = Integer.valueOf(customProperties.get("btc.queueSize"));
+        double maxSpread = Double.valueOf(customProperties.get("btc.maxSpread"));;
 
         String market = "BTC-" + currency;
         LinkedList<Double> tradePriceWindow = new LinkedList<>();
@@ -443,7 +443,7 @@ public class BittrexClient {
 
             //            System.out.print("\r");
             System.out.println(String.format(
-                    "[%s] Window Size = %s, From closing price = %s%%. From last trade = %s%%\t\t\t. Highest=%s%%. Lowest=%s%%. currentTradePrice=%s. prevTradePrice=%s. HighestPrice=%s. LowestPrice=%s. closingPrice=%s",
+                    "[%s] QueueSize=%s. Change=%s%%. rel_prev_trade=%22s%%. Highest=%s%%. Lowest=%s%%. LastPrice=%s. prevToLastPrice=%s. HighestPrice=%s. LowestPrice=%s. closingPrice=%s",
                     market, currentWindowSize, dfTwo.format(changeFromLastDay), changeFromPrevTrade,
                     dfTwo.format(highestPercentageInWindow), dfTwo.format(lowestPercentageInWindow),
                     recentTradePriceInSatoshi, prevTradePriceInQ, highestPriceInSatoshi, lowestPriceInSatoshi, basePriceInSatoshi));
@@ -462,17 +462,35 @@ public class BittrexClient {
                         String.valueOf(requestedIncrease), commission, dfTwo);
                 if (Double.compare(achievableProfit, minProfit) >= 0) {
                     if (Double.compare(changeFromPrevTrade, 0) > 0){
-                        buyAndSellCurrency(bittrex, currency, spendPercent, minProfit,
-                                requestedIncrease, dfEight, dfTwo, "DEMAND", recentTradePriceInBtc,
-                                basePriceInBtc, commission);
-                    break;
+                        double buyPrice = 0;
+
+                        JsonObject resultJsonObject = getOrderBookJson(bittrex, market, "both");
+
+                        JsonArray buyOrders = getOrdersByType(resultJsonObject, "buy");
+                        double bidPrice = getHighestRate(buyOrders);
+                        //        bidPrice = Double.valueOf(dfEight.format(bidPrice));
+
+
+                        JsonArray sellOrders = getOrdersByType(resultJsonObject, "sell");
+                        double askPrice = getHighestRate(sellOrders);
+
+                        double spread = Double.valueOf(dfTwo.format(((askPrice-bidPrice)*100)/recentTradePriceInSatoshi));
+
+                        if(Double.compare(spread, maxSpread) > 0) {
+                            System.out.println(String.format("[%s] Too much spread.Current spread=%s. Required spread<=%s", market, spread, maxSpread));
+                        } else {
+                            buyPrice = bidPrice + 0.00000001;
+                            buyAndSellCurrency(bittrex, currency, spendPercent, minProfit,
+                                    requestedIncrease, dfEight, dfTwo, "DEMAND",
+                                    recentTradePriceInBtc,
+                                    basePriceInBtc, buyPrice, commission);
+                            break;
+                        }
                 } else {
-                        System.out.println(String.format("[%s] Minimum Profit is realizable at the current trade price of %s. But the market is not moving up. Conntinuing the watch...", market, recentTradePriceInBtc));
+                        System.out.println(String.format("[%s] Minimum Profit is realizable. Market is not moving up. Continuing the watch...", market));
                     }
                 } else {
-                    System.out.println(String.format(
-                            "[%s] It is too risky to trade because minimum desired profit is not achievable with the observed volatility. achievable profit=%s. minimum desired profit=%s",
-                            market, achievableProfit, minProfit));
+                    System.out.println(String.format("[%s] Min profit not achievable at current price. Predicted profit=%s. Min profit=%s", market, achievableProfit, minProfit));
                 }
             }
             try {
