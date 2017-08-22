@@ -75,28 +75,31 @@ public class BittrexClient {
             sellCurrency(minDesiredProfit, currency, bittrex, dfTwo);
             break;
         case 1:
-            while (true) {
-                currency = getCurrency();
-                validateSpendPercent(spendPercent,currency);
+            validateSpendPercent(spendPercent, currency);
+            double totalBtcAmount = getAvailableBTC(bittrex);
+            double totalBTCInvestment = totalBtcAmount * spendPercent / 100;
+            currency = getCurrency();
 
-                Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, "BTC-"+currency);
-                double lastTradedPrice = Double.valueOf(marketMap.get("Last"));
-                double basePrice = Double.valueOf(marketMap.get("PrevDay"));
+            Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, "BTC-" + currency);
+            double lastTradedPrice = Double.valueOf(marketMap.get("Last"));
+            double basePrice = Double.valueOf(marketMap.get("PrevDay"));
 
-                String market = "BTC-"+currency;
-                JsonObject resultJsonObject = getOrderBookJson(bittrex, market, "both");
-                JsonArray buyOrders = getOrdersByType(resultJsonObject, "buy");
+            String market = "BTC-" + currency;
+            JsonObject resultJsonObject = getOrderBookJson(bittrex, market, "both");
+            JsonArray buyOrders = getOrdersByType(resultJsonObject, "buy");
 
-                double bidPrice = getHighestRate(buyOrders);
-                double buyPrice = bidPrice + 0.00000001;
+            double bidPrice = getHighestRate(buyOrders);
+            double buyPrice = bidPrice + 0.00000001;
 
-                buyAndSellCurrency(bittrex, currency, spendPercent, minDesiredProfit, demandIncrease,
-                        dfEight, dfTwo, "DEMAND", lastTradedPrice, basePrice, buyPrice, commission);
-            }
+            buyAndSellCurrency(bittrex, currency, minDesiredProfit, demandIncrease,
+                    dfEight, dfTwo, "DEMAND", lastTradedPrice, basePrice, buyPrice, totalBTCInvestment, commission);
+            break;
         case 2:
             currency = getCurrency();
             validateSpendPercent(spendPercent,currency);
-            watchAndSellIfProfitable(bittrex, currency, spendPercent, commission, minDesiredProfit, dfEight, dfTwo, customProperties);
+            totalBtcAmount = getAvailableBTC(bittrex);
+            totalBTCInvestment = totalBtcAmount * spendPercent / 100;
+            watchAndSellIfProfitable(bittrex, currency, totalBTCInvestment, commission, minDesiredProfit, dfEight, dfTwo, customProperties);
             break;
         default:
             System.out.println("Option not available");
@@ -137,19 +140,15 @@ public class BittrexClient {
         return currencies.get(index);
     }
 
-    private static void buyAndSellCurrency(Bittrex bittrex, String currency, double spendPercent, double desiredProfit,
+    private static void buyAndSellCurrency(Bittrex bittrex, String currency, double desiredProfit,
             double demandIncrease, DecimalFormat dfEight, DecimalFormat dfTwo, String tradeCriteria, double lastTradedPrice,
-            double basePrice, double buyPrice, double commission) {
+            double basePrice, double buyPrice, double totalBTCInvestment, double commission) {
 
         String market = "BTC-" + currency;
 
         double change = ((lastTradedPrice - basePrice)/basePrice)*100;
 
         System.out.println(String.format("%s is trading at %s pecent higher than base price",market, change));
-
-
-        double totalBtcAmount = getAvailableBTC(bittrex);
-        double totalBTCInvestment = totalBtcAmount * spendPercent / 100;
 
         double buyQuantity = getBuyQuantity(dfEight, commission, buyPrice, totalBTCInvestment);
 
@@ -377,7 +376,7 @@ public class BittrexClient {
     }
 
     private static void watchAndSellIfProfitable(Bittrex bittrex, String currency,
-            double spendPercent, double commission, double minProfit, DecimalFormat dfEight,
+             double totalBTCInvestment, double commission, double minProfit, DecimalFormat dfEight,
             DecimalFormat dfTwo, Map<String, String> customProperties) {
 
         double tolerance = Double.valueOf(customProperties.get("btc.tolerance"));
@@ -480,10 +479,10 @@ public class BittrexClient {
                             System.out.println(String.format("[%s] Too much spread.Current spread=%s. Required spread<=%s", market, spread, maxSpread));
                         } else {
                             buyPrice = bidPrice + 0.00000001;
-                            buyAndSellCurrency(bittrex, currency, spendPercent, minProfit,
+                            buyAndSellCurrency(bittrex, currency, minProfit,
                                     requestedIncrease, dfEight, dfTwo, "DEMAND",
                                     recentTradePriceInBtc,
-                                    basePriceInBtc, buyPrice, commission);
+                                    basePriceInBtc, buyPrice, totalBTCInvestment, commission);
                             break;
                         }
                 } else {
