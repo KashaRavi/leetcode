@@ -3,6 +3,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -52,7 +54,8 @@ public class BittrexClient {
         //        String currency = "";
 
 
-        Utils.loadCurrencies("currencies.txt", currencies);
+        String currencyFile = "currencies.txt";
+        Utils.loadCurrencies(currencyFile, currencies);
         Map<String, String> customProperties = new HashMap<>();
         Utils.loadCustomProperties("config.txt",customProperties);
 
@@ -68,13 +71,13 @@ public class BittrexClient {
         int option = getOption(options);
         switch (option) {
         case 0:
-            currency = getCurrency();
+            currency = getCurrency(currencyFile);
             validateTradeConfiguration(currency, customProperties);
             double minDesiredProfit =  Double.valueOf(customProperties.get("btc.minDesiredProfit"));
             sellCurrency(minDesiredProfit, currency, bittrex, dfTwo);
             break;
         case 1:
-            currency = getCurrency();
+            currency = getCurrency(currencyFile);
             double totalBtcAmount = getAvailableBTC(bittrex);
             System.out.println("Total Available BTC=" + totalBtcAmount);
             validateTradeConfiguration(currency, customProperties);
@@ -102,7 +105,7 @@ public class BittrexClient {
                     dfEight, dfTwo, "DEMAND", lastTradedPrice, basePrice, buyPrice, totalBTCInvestment, commission);
             break;
         case 2:
-            currency = getCurrency();
+            currency = getCurrency(currencyFile);
             totalBtcAmount = getAvailableBTC(bittrex);
             System.out.println("Total Available BTC=" + totalBtcAmount);
             validateTradeConfiguration(currency, customProperties);
@@ -175,7 +178,7 @@ public class BittrexClient {
         return in.nextInt();
     }
 
-    private static String getCurrency() {
+    private static String getCurrency(String filenName) {
         int j=0;
         int rowSize = 6;
         for (int i = 0; i < currencies.size(); i++) {
@@ -185,7 +188,28 @@ public class BittrexClient {
         }
         System.out.print("\nEnter currency No:");
         Scanner in = new Scanner(System.in);
+
         int index = in.nextInt();
+        in.nextLine();
+        if(index < 0) {
+            System.out.print("Enter the new currency:");
+            String newCurrency = in.nextLine();
+
+            for(int i=0;i<currencies.size();i++) {
+                if(currencies.get(i).equals(newCurrency)){
+                    index = i;
+                    break;
+                }
+            }
+
+            if(index < 0) {
+                Utils.appendCurrency(filenName, newCurrency);
+                currencies.add(newCurrency);
+                index = currencies.size()-1;
+            } else {
+                System.out.println("Currency is available in the file:"+filenName);
+            }
+        }
 
         return currencies.get(index);
     }

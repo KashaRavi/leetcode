@@ -73,6 +73,21 @@ public class Utils {
         }
     }
 
+    public static void appendCurrency(String textFile, String currency) {
+        BufferedWriter b = getBufferedWriter(textFile);
+        try {
+            b.append(currency.subSequence(0,currency.length())+"\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                b.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static void loadCustomProperties(String textFile, Map<String, String> customProperties) {
         BufferedReader b = getBufferedReader(textFile);
 
@@ -107,6 +122,23 @@ public class Utils {
             try {
                 f = new File(filename);
                 b = new BufferedReader(new FileReader(f));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return b;
+    }
+
+    private static BufferedWriter getBufferedWriter(String textFile) {
+        String filename = String.format(WINDOWS_DATA_LOCATION, textFile);
+        File f = null;
+        BufferedWriter b = null;
+        try {
+            b = new BufferedWriter(new FileWriter(filename, true));
+        } catch (Exception fileEx) {
+            filename = String.format(MAC_DATA_LOCATION, textFile);
+            try {
+                b = new BufferedWriter(new FileWriter(filename, true));
             } catch (IOException e) {
                 e.printStackTrace();
             }
