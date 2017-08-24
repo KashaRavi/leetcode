@@ -55,10 +55,7 @@ public class BittrexClient {
         Utils.loadCurrencies("currencies.txt", currencies);
         Map<String, String> customProperties = new HashMap<>();
         Utils.loadCustomProperties("config.txt",customProperties);
-        double spendPercent = Double.valueOf(customProperties.get("btc.spendPercent"));
-        double minDesiredProfit =  Double.valueOf(customProperties.get("btc.minDesiredProfit"));
-        double demandIncrease = Double.valueOf(customProperties.get("btc.demandIncrease"));
-        double commission = Double.valueOf(customProperties.get("btc.commission"));
+
         String currency ="";
 
         String[] options = {
@@ -72,13 +69,23 @@ public class BittrexClient {
         switch (option) {
         case 0:
             currency = getCurrency();
+            validateTradeConfiguration(currency, customProperties);
+            double minDesiredProfit =  Double.valueOf(customProperties.get("btc.minDesiredProfit"));
             sellCurrency(minDesiredProfit, currency, bittrex, dfTwo);
             break;
         case 1:
-            validateSpendPercent(spendPercent, currency);
-            double totalBtcAmount = getAvailableBTC(bittrex);
-            double totalBTCInvestment = totalBtcAmount * spendPercent / 100;
             currency = getCurrency();
+            double totalBtcAmount = getAvailableBTC(bittrex);
+            System.out.println("Total Available BTC=" + totalBtcAmount);
+            validateTradeConfiguration(currency, customProperties);
+
+            double spendPercent = Double.valueOf(customProperties.get("btc.spendPercent"));
+            minDesiredProfit = Double.valueOf(customProperties.get("btc.minDesiredProfit"));
+            double demandIncrease = Double.valueOf(customProperties.get("btc.demandIncrease"));
+            double commission = Double.valueOf(customProperties.get("btc.commission"));
+            double totalBTCInvestment = totalBtcAmount * spendPercent / 100;
+
+            System.out.println("Amount for trading "+currency+" is:" + totalBTCInvestment );
 
             Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, "BTC-" + currency);
             double lastTradedPrice = Double.valueOf(marketMap.get("Last"));
@@ -96,9 +103,17 @@ public class BittrexClient {
             break;
         case 2:
             currency = getCurrency();
-            validateSpendPercent(spendPercent,currency);
             totalBtcAmount = getAvailableBTC(bittrex);
+            System.out.println("Total Available BTC=" + totalBtcAmount);
+            validateTradeConfiguration(currency, customProperties);
+
+            spendPercent = Double.valueOf(customProperties.get("btc.spendPercent"));
+            minDesiredProfit = Double.valueOf(customProperties.get("btc.minDesiredProfit"));
+            commission = Double.valueOf(customProperties.get("btc.commission"));
+
             totalBTCInvestment = totalBtcAmount * spendPercent / 100;
+            System.out.println("Amount for trading "+currency+" is:" + totalBTCInvestment );
+
             watchAndSellIfProfitable(bittrex, currency, totalBTCInvestment, commission, minDesiredProfit, dfEight, dfTwo, customProperties);
             break;
         default:
@@ -106,14 +121,49 @@ public class BittrexClient {
             break;
         }
     }
-    private static void validateSpendPercent(double spendpercent, String currency) {
-        System.out.println(String.format("Do u want to spend %s%% of available BTC on %s.", spendpercent, currency));
+
+    private static void validateTradeConfiguration(String currency,
+            Map<String, String> customProperties) {
+        System.out.println();
+        customProperties.keySet().forEach(
+                a -> System.out.println(String.format("%s=%s", a, customProperties.get(a))));
+        System.out.println();
+        System.out.println(String.format("Check above configuration before proceeding to trade %s.",
+                currency));
+        System.out.println("");
+        Scanner configScanner = new Scanner(System.in);
+        System.out.print("Do u want to change spend percent:");
+        String readSpendPercent = configScanner.nextLine();
+        if (readSpendPercent.equals("y")) {
+            System.out.print("Enter value for btc.spendPercent:");
+            String spendPercent = configScanner.nextLine();
+            customProperties.put("btc.spendPercent", spendPercent);
+            System.out.println("value="+customProperties.get("btc.spendPercent"));
+        }
+        System.out.print("Do u want to change minProfit:");
+        String readMinProfit = configScanner.nextLine();
+        if (readMinProfit.equals("y")) {
+            System.out.print("Enter value for btc.minDesiredProfit:");
+            String minProfit = configScanner.nextLine();
+            customProperties.put("btc.minDesiredProfit", minProfit);
+            System.out.println("value="+customProperties.get("btc.minDesiredProfit"));
+        }
+
+        System.out.print("Do u want to change demandIncrease:");
+        String readDemandIncrease = configScanner.nextLine();
+        if (readDemandIncrease.equals("y")) {
+            System.out.print("Enter value for btc.demandIncrease:");
+            String demandIncrease = configScanner.nextLine();
+            customProperties.put("btc.demandIncrease", demandIncrease);
+            System.out.println("value="+customProperties.get("btc.demandIncrease"));
+        }
+
         System.out.print("Press -1 to continue. Press any other number to exit:");
         Scanner in = new Scanner(System.in);
-         int option = in.nextInt();
-         if(option != -1) {
-             System.exit(0);
-         }
+        int option = in.nextInt();
+        if (option != -1) {
+            System.exit(0);
+        }
     }
 
     private static int getOption(String[] options) {
@@ -447,8 +497,14 @@ public class BittrexClient {
                     dfTwo.format(highestPercentageInWindow), dfTwo.format(lowestPercentageInWindow),
                     recentTradePriceInSatoshi, prevTradePriceInQ, highestPriceInSatoshi, lowestPriceInSatoshi, basePriceInSatoshi));
 
-            if(Double.compare((((initialTradePriceInBtc - recentTradePriceInBtc) * 100)/basePriceInBtc),tolerance) >= 0) {
-                System.out.println(String.format("[%s] current trading price is down by %s%% from the initial observed price. Quitting the trade....", market, tolerance));
+            double changeFromInitialTrade = ((initialTradePriceInBtc - recentTradePriceInBtc) * 100)/basePriceInBtc;
+            if(Double.compare(changeFromInitialTrade,tolerance) >= 0) {
+                System.out.println(String.format("[%s] current trading price is down by more than %s%% from the initial observed price. Quitting the trade....", market, tolerance));
+                break;
+            }
+
+            if(Double.compare((-1*changeFromInitialTrade),tolerance) >= 0) {
+                System.out.println(String.format("[%s] current trading price is up by more than %s%% from the initial observed price. Quitting the trade....", market, tolerance));
                 break;
             }
             double requestedIncrease = (highestPercentageInWindow - lowestPercentageInWindow) / 2;
