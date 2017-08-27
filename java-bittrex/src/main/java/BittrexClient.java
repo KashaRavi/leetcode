@@ -17,6 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class BittrexClient {
     public static int SATOSHI_CONST = 100000000;
@@ -64,7 +65,8 @@ public class BittrexClient {
         String[] options = {
                 "Sell currency",
                 "buy and sell currency",
-                "watch market"
+                "watch market",
+                "get Asset State"
         };
 
 
@@ -118,6 +120,9 @@ public class BittrexClient {
             System.out.println("Amount for trading "+currency+" is:" + totalBTCInvestment );
 
             watchAndSellIfProfitable(bittrex, currency, totalBTCInvestment, commission, minDesiredProfit, dfEight, dfTwo, customProperties);
+            break;
+        case 3:
+            getAssetStates(bittrex,dfTwo, dfEight);
             break;
         default:
             System.out.println("Option not available");
@@ -214,6 +219,10 @@ public class BittrexClient {
         return currencies.get(index);
     }
 
+    private static void getStateOfHoldings() {
+
+    }
+
     private static void buyAndSellCurrency(Bittrex bittrex, String currency, double desiredProfit,
             double demandIncrease, DecimalFormat dfEight, DecimalFormat dfTwo, String tradeCriteria, double lastTradedPrice,
             double basePrice, double buyPrice, double totalBTCInvestment, double commission) {
@@ -305,6 +314,51 @@ public class BittrexClient {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static void getAssetStates(Bittrex bittrex, DecimalFormat dfTwo, DecimalFormat dfEight) {
+        String BTC_MARKET ="BTC";
+        String USDT_MARKET="USDT";
+        List<HashMap<String, String >> positiveBalances = getPositiveBalances(bittrex);
+        System.out.println(String.format("%-8s\t\t%-9s\t\t%-10s\t\t%8s\t\t%-6s%%\t\t%-15s\t\t%-9s\t\t%-8s","currency","buy_price","last_price","diff(SAT)","profit","volume","24HR HIGH","24HR LOW"));
+        for(HashMap<String, String> balanceMap : positiveBalances) {
+            String currency = balanceMap.get("Currency");
+            if(currency.equals(BTC_MARKET) || currency.equals(USDT_MARKET)) {
+                continue;
+            }
+            String market = BTC_MARKET+"-" +currency;
+            String buyPrice  = getMostRecentBuyPrice(bittrex, market );
+            Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, market);
+            String lastTradedPrice = marketMap.get("Last");
+            String closingPrice = marketMap.get("PrevDay");
+            String high = marketMap.get("High");
+            String low = marketMap.get("Low");
+            String bidPrice = marketMap.get("Bid");
+            String AskPrice = marketMap.get("Ask");
+            String baseVolume = marketMap.get("BaseVolume");
+
+            double lastTradeValueInDouble = Double.valueOf(dfEight.format(Double.valueOf(lastTradedPrice)));
+            double buyPriceInDouble = Double.valueOf(dfEight.format(Double.valueOf(buyPrice)));
+            int diff = (int)(lastTradeValueInDouble*SATOSHI_CONST) - (int)(buyPriceInDouble*SATOSHI_CONST);
+
+            double currentProfit = Double.valueOf(dfTwo.format(((lastTradeValueInDouble-buyPriceInDouble)*100)/buyPriceInDouble));
+            System.out.println(String.format("%-8s\t\t%-9s\t\t%-10s\t\t%8s\t\t%6s%%\t\t%-15s\t\t%-9s\t\t%-8s",currency,buyPrice,lastTradedPrice,diff,currentProfit, baseVolume, high,low));
+        }
+    }
+
+    private static List<HashMap<String, String >> getPositiveBalances(Bittrex bittrex) {
+        String balancesStr = bittrex.getBalances();
+        List<HashMap<String, String >> balancesList = Bittrex.getMapsFromResponse(balancesStr);
+        List<HashMap<String, String >> positiveBalancesList = balancesList.stream().filter( currencyMap -> {
+            double balance = Double.valueOf(currencyMap.get("Balance"));
+            if(Double.compare(balance, 0) >0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        ).collect(Collectors.toList());
+        return positiveBalancesList;
     }
 
     private static double getExpectedProfit(String buySize, String buyPrice, String sellSize, String sellPrice, double commision) {
@@ -632,18 +686,9 @@ public class BittrexClient {
 
     private static String getDesiredSellPrice(Bittrex bittrex, String market,
             double desiredProfitPercent) {
-        String orderHistoryJsonStr = bittrex.getOrderHistory(market);
+        double buyPrice = Double.valueOf(getMostRecentBuyPrice(bittrex, market));
 
-//        String marketOrderHistoryPrettyStr = Utils.prettyPrintJsonStr(orderHistoryJsonStr);
-//        Utils.writeToFile(marketOrderHistoryPrettyStr,market+"_order_history");
-
-        List<HashMap<String, String>> orderHistoryMapsList = Bittrex.getMapsFromResponse(orderHistoryJsonStr);
-        Map<String, String> mostRecentBuyOrder = getRecentBuyOrderHistory(orderHistoryMapsList);
-        String buyPriceStr = mostRecentBuyOrder.get("Limit");
-
-        System.out.println(String.format("[%s] My most recent buy-order price: %s", market, buyPriceStr ));
-
-        double buyPrice = Double.valueOf(buyPriceStr);
+        System.out.println(String.format("[%s] My most recent buy-order price: %s", market, buyPrice ));
 
         double bidPrice = buyPrice * (1 + desiredProfitPercent/100);
         bidPrice = (double) Math.round(bidPrice * 100000000) / 100000000;
@@ -651,6 +696,17 @@ public class BittrexClient {
         return bidPriceStr;
     }
 
+    private static String getMostRecentBuyPrice(Bittrex bittrex, String market) {
+        String orderHistoryJsonStr = bittrex.getOrderHistory(market);
+
+        //        String marketOrderHistoryPrettyStr = Utils.prettyPrintJsonStr(orderHistoryJsonStr);
+        //        Utils.writeToFile(marketOrderHistoryPrettyStr,market+"_order_history");
+
+        List<HashMap<String, String>> orderHistoryMapsList = Bittrex.getMapsFromResponse(orderHistoryJsonStr);
+        Map<String, String> mostRecentBuyOrder = getRecentBuyOrderHistory(orderHistoryMapsList);
+        String buyPriceStr = mostRecentBuyOrder.get("Limit");
+        return buyPriceStr;
+    }
 
     private static Map<String, String> getRecentBuyOrderHistory(List<HashMap<String, String>> orderHistoryMapsList) {
         return orderHistoryMapsList.stream().filter(map -> map.get("OrderType").equals("LIMIT_BUY")).findFirst().orElse(null);
