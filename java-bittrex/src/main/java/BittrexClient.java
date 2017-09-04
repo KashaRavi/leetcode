@@ -3,8 +3,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -64,9 +62,10 @@ public class BittrexClient {
 
         String[] options = {
                 "Sell currency",
-                "buy and sell currency",
-                "watch market",
-                "get Asset State"
+                "buy and sell now",
+                "buy and sell ater watch",
+                "get Asset State",
+                "Monitor Currency"
         };
 
 
@@ -117,16 +116,96 @@ public class BittrexClient {
             commission = Double.valueOf(customProperties.get("btc.commission"));
 
             totalBTCInvestment = totalBtcAmount * spendPercent / 100;
-            System.out.println("Amount for trading "+currency+" is:" + totalBTCInvestment );
+            System.out.println("Amount for trading " + currency + " is:" + totalBTCInvestment );
 
             watchAndSellIfProfitable(bittrex, currency, totalBTCInvestment, commission, minDesiredProfit, dfEight, dfTwo, customProperties);
             break;
         case 3:
             getAssetStates(bittrex,dfTwo, dfEight);
             break;
+        case 4:
+            currency = getCurrency(currencyFile);
+            validateNotificationConfiguration(currency, customProperties);
+            monitorAndNotify(bittrex, currency, dfTwo, customProperties);
+            break;
         default:
             System.out.println("Option not available");
             break;
+        }
+    }
+
+    private static void monitorAndNotify(Bittrex bittrex, String currency,
+            DecimalFormat dfTwo, Map<String, String> customProperties) {
+
+        double crashFallInPercent = Double.valueOf(customProperties.get("monitor.crashFallInPercent"));
+        int notificationIntervals = Integer.valueOf(customProperties.get("monitor.notificationIntervals"));
+        long pollIntervalInMillis = Long.valueOf(customProperties.get("monitor.pollIntervalInMillis"));
+        
+        String market = "BTC-" + currency;
+        SlackService slackService = new SlackService();
+
+        Map<String, String> marketMap = getCurrentViewOfMarket(bittrex, market);
+        double basePriceInBtc = Double.valueOf(marketMap.get("PrevDay"));
+        String initialTradePriceStr = marketMap.get("Last");
+        double initialTradePriceInBtc = Double.valueOf(initialTradePriceStr);
+
+        double priceAtStartInBtc = initialTradePriceInBtc;
+        String priceAtStartStr = initialTradePriceStr;
+        double currentPriceInBtc = priceAtStartInBtc;
+        String currentPriceStr = priceAtStartStr;
+        int currentIteration = 0;
+        boolean hasNotified =false;
+        String positiveColor = "#0bb000";
+        String negativeColor = "#a20000";
+        String color = "";
+
+        System.out.println(String .format("Monitoring price action of %s....",currency));
+
+        while (true) {
+
+            double changePercent = ((currentPriceInBtc - priceAtStartInBtc) * 100) / basePriceInBtc;
+            changePercent = Double.valueOf(dfTwo.format(changePercent));
+
+            if (Double.compare((-1 * changePercent), crashFallInPercent) > 0) {
+                color = (Double.compare(changePercent, 0) >= 0) ? positiveColor : negativeColor;
+                String notificationMsg  = String.format("Price crashed by %7s%% from base_price=%s to current_price=%s", changePercent,
+                        priceAtStartStr, currentPriceStr);
+                System.out.println(notificationMsg);
+                slackService.notifyOnChannel(market, notificationMsg, color);
+                currentIteration = 0;
+                priceAtStartInBtc = currentPriceInBtc;
+                priceAtStartStr = currentPriceStr;
+                hasNotified = true;
+            }
+
+            if(currentIteration == notificationIntervals) {
+                if(!hasNotified) {
+                    color = (Double.compare(changePercent, 0) >= 0) ? positiveColor : negativeColor;
+                    String notificationMsg  = String.format("Price changed by %7s%% from base_price=%s to current_price=%s", changePercent,
+                            priceAtStartStr, currentPriceStr);
+                    System.out.println(notificationMsg);
+                    slackService.notifyOnChannel(market, notificationMsg, color);
+                }
+                currentIteration = 0;
+                priceAtStartInBtc = currentPriceInBtc;
+                priceAtStartStr = currentPriceStr;
+                hasNotified =false;
+            }
+
+            try {
+                Thread.sleep(pollIntervalInMillis);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            marketMap = getCurrentViewOfMarket(bittrex, market);
+            try {
+                currentPriceStr = marketMap.get("Last");
+                currentPriceInBtc = Double.valueOf(currentPriceStr);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            currentIteration++;
         }
     }
 
@@ -165,6 +244,29 @@ public class BittrexClient {
             customProperties.put("btc.demandIncrease", demandIncrease);
             System.out.println("value="+customProperties.get("btc.demandIncrease"));
         }
+
+        System.out.print("Press -1 to continue. Press any other number to exit:");
+        Scanner in = new Scanner(System.in);
+        int option = in.nextInt();
+        if (option != -1) {
+            System.exit(0);
+        }
+    }
+
+    private static void validateNotificationConfiguration(String currency,
+            Map<String, String> customProperties) {
+        System.out.println();
+        customProperties.keySet().forEach(
+                a -> {
+                    if (a.startsWith("monitor")) {
+                        System.out.println(String.format("%s=%s", a, customProperties.get(a)));
+                    }
+                }
+        );
+        System.out.println();
+        System.out.println(String.format("Check above notification settings for monitoring currency %s",
+                currency));
+        System.out.println("");
 
         System.out.print("Press -1 to continue. Press any other number to exit:");
         Scanner in = new Scanner(System.in);
