@@ -24,7 +24,7 @@ public class SlackService {
     public static void main(String[] args)
     {
         SlackService slackService = new SlackService();
-        slackService.notifyOnChannel("PRICE_UP", "PIVX Price up", "#a20000");
+        slackService.notifyOnChannel("Test","PRICE_UP", "PIVX Price up", "#a20000");
     }
 
     SlackService() {
@@ -56,9 +56,9 @@ public class SlackService {
         return webhook;
     }
 
-    public void notifyOnChannel(String title, String text, String color) {
+    public void notifyOnChannel(String username, String title, String text, String color) {
         SlackRequest notificationRequest = new SlackRequest();
-        notificationRequest.username = this.username;
+        notificationRequest.username = username;
         notificationRequest.icon_url = this.icon_url;
         MessageAttachment attachment = new MessageAttachment();
         attachment.color = color;

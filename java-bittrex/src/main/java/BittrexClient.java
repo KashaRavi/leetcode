@@ -171,7 +171,7 @@ public class BittrexClient {
                 String notificationMsg  = String.format("Price crashed by %7s%% from base_price=%s to current_price=%s", changePercent,
                         priceAtStartStr, currentPriceStr);
                 System.out.println(notificationMsg);
-                slackService.notifyOnChannel(market, notificationMsg, color);
+                slackService.notifyOnChannel(currency, market, notificationMsg, color);
                 currentIteration = 0;
                 priceAtStartInBtc = currentPriceInBtc;
                 priceAtStartStr = currentPriceStr;
@@ -184,7 +184,7 @@ public class BittrexClient {
                     String notificationMsg  = String.format("Price changed by %7s%% from base_price=%s to current_price=%s", changePercent,
                             priceAtStartStr, currentPriceStr);
                     System.out.println(notificationMsg);
-                    slackService.notifyOnChannel(market, notificationMsg, color);
+                    slackService.notifyOnChannel(currency, market, notificationMsg, color);
                 }
                 currentIteration = 0;
                 priceAtStartInBtc = currentPriceInBtc;
