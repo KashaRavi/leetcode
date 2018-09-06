@@ -1,6 +1,7 @@
 btc.spendPercent=100
-btc.minDesiredProfit=1
+btc.minDesiredProfit=0.5
 btc.demandIncrease=5
 btc.commission=0.25
+btc.maxSpread=0.5
 btc.tolerance=10
 btc.queueSize=1000
