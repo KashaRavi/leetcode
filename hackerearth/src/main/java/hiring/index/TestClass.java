@@ -1,4 +1,4 @@
-package hiring1.index;
+package hiring.index;
 
 import java.util.Scanner;
 

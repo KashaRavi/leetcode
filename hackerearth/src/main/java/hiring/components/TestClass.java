@@ -1,4 +1,4 @@
-package hiring1.components;
+package hiring.components;
 
 import java.util.*;
 
