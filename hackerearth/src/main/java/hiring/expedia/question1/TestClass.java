@@ -4,6 +4,10 @@ package hiring.expedia.question1;
  * Created by rkasha on 1/22/19.
  */
 
+/**
+ * This solution is wrong
+ */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,8 +22,8 @@ public class TestClass {
         double s = Double.parseDouble(inputString);
         //a,b,c,d
         Map<Long, Integer> countMap = new HashMap<>();
-        for (int a = 0; a <= 1000; a++) {
-            for (int b = 0; b <= 1000; b++) {
+        for (int a = 0; a <= 1000&& a <= s; a++) {
+            for (int b = 0; b <= 1000 && b <= s; b++) {
                 long key = a + b * b;
                 if (countMap.containsKey(key)) {
                     countMap.put(key, countMap.get(key) + 1);
@@ -29,9 +33,10 @@ public class TestClass {
             }
         }
 
+
         long count = 0;
-        for (int c = 0; c <= 1000; c++) {
-            for (int d = 0; d <= 1000; d++) {
+        for (int c = 0; c <= 1000 && c <= s; c++) {
+            for (int d = 0; d <= 1000 && d <= s; d++) {
                 long val = c * c * c + d * d * d * d;
                 double dKey = s - val;
                 if (dKey >= 0 && dKey <= 2 * 1000 * 1000) {

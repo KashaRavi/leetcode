@@ -7,6 +7,10 @@ import java.io.InputStreamReader;
 /**
  * Created by rkasha on 1/22/19.
  */
+
+/**
+ * This is a O(N^2) solution following the O(N^2) solution for longest increasing subsequence.
+ */
 public class TestClass {
 
     public static void main(String[] args) throws IOException {
