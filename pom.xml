@@ -51,5 +51,6 @@
         <module>git</module>
         <module>bittrex</module>
         <module>java-bittrex</module>
+        <module>utilities</module>
     </modules>
 </project>
