@@ -6,6 +6,7 @@ package tree;
 public class Node<T extends Comparable<?>> {
     public Node<T> left;
     public Node<T> right;
+    public Node<T> succ;
     public T data;
 
     public Node(T data) {

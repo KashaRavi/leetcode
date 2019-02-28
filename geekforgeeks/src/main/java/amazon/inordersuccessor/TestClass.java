@@ -126,6 +126,27 @@ class BinaryTree
 
         System.out.println();
         BTreePrinter.printNode(tree.root);
+
+        buildTraversalList(tree.root);
+
+        while(next != null) {
+            System.out.println(next.data);
+            System.out.println("->");
+            next = next.succ;
+        }
+
     }
+
+    public static void buildTraversalList(Node node) {
+        if(node !=null) {
+            buildTraversalList(node.right);
+            node.succ = next;
+            next = node;
+            buildTraversalList(node.left);
+        }
+    }
+
+    static Node next =null;
+
 }
 
