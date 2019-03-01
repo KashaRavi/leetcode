@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
- class BTreePrinterTest {
+class BTreePrinterTest {
 
     private static Node<Integer> test1() {
         Node<Integer> root = new Node<Integer>(2);
@@ -77,9 +77,7 @@ import java.util.List;
     }
 }
 
-
-
-    public class BTreePrinter {
+public class BTreePrinter {
 
     public static <T extends Comparable<?>> void printNode(Node<T> root) {
         int maxLevel = BTreePrinter.maxLevel(root);
@@ -87,7 +85,8 @@ import java.util.List;
         printNodeInternal(Collections.singletonList(root), 1, maxLevel);
     }
 
-    private static <T extends Comparable<?>> void printNodeInternal(List<Node<T>> nodes, int level, int maxLevel) {
+    private static <T extends Comparable<?>> void printNodeInternal(List<Node<T>> nodes, int level,
+            int maxLevel) {
         if (nodes.isEmpty() || BTreePrinter.isAllElementsNull(nodes))
             return;
 

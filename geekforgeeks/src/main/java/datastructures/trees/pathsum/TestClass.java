@@ -2,7 +2,7 @@
 
 package datastructures.trees.pathsum;
 
-import tree.TreeUtil;
+import tree.ITreeUtil;
 import tree.Node;
 
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class TestClass {
 
     public static void main(String[] args) throws IOException {
 
-        Node<Integer> root = TreeUtil.getIntTree();
+        Node<Integer> root = ITreeUtil.getTree(3);
 
 //        printPath(root, 18);
         printPath(root, 11);
