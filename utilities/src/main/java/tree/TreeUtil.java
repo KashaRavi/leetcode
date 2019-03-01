@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class BTreeConstructor {
+public class TreeUtil {
     Node root;
     static int preIndex = 0;
 
@@ -76,8 +76,17 @@ public class BTreeConstructor {
 
     // driver program to test above functions
     public static void main(String args[]) throws IOException {
-        BTreeConstructor tree = new BTreeConstructor();
 
+        TreeUtil tree = new TreeUtil();
+        Node root = constructTree(tree);
+        // building the tree by printing inorder traversal
+        System.out.println("Inorder traversal of constructed tree is : ");
+        tree.printInorder(root);
+        System.out.println();
+        BTreePrinter.printNode(root);
+    }
+
+    public static Node constructTree(TreeUtil tree) throws IOException {
         InputStream inpStream;
         inpStream = ReadJavaProperties.class.getClassLoader()
                 .getResourceAsStream("trees.txt");
@@ -113,11 +122,104 @@ public class BTreeConstructor {
 
         int len = in.length;
         Node root = tree.buildTree(in, pre, 0, len - 1);
-
-        // building the tree by printing inorder traversal
-        System.out.println("Inorder traversal of constructed tree is : ");
-        tree.printInorder(root);
-        System.out.println();
-        BTreePrinter.printNode(root);
+        return root;
     }
+
+    public Node getTree() {
+        return root;
+    }
+
+    public static Node<Integer> getIntTree()
+    {
+        Node<Integer> root = new Node<Integer>(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        Node node = root.right;
+        node.left = new Node(6);
+        node.right = new Node(7);
+        Node tempNode = node;
+        node = node.left;
+        node.left = new Node(8);
+        node.right = new Node(9);
+        node = tempNode.right;
+        node.left = new Node(0);
+        node.right = new Node(1);
+
+        /*
+
+       1
+      / \
+     /   \
+    /     \
+   /       \
+   2       3
+  / \     / \
+ /   \   /   \
+ 4   5   6   7
+        / \ / \
+        8 9 0 1
+
+         */
+
+        return root;
+
+    }
+
+    public static Node<Integer> getIntTree1()
+    {
+        Node<Integer> root = new Node<Integer>(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        Node node = root.right;
+        node.left = new Node(6);
+        node.right = new Node(7);
+        Node tempNode = node;
+        node = node.left;
+        node.left = new Node(8);
+        node.right = new Node(9);
+        node = tempNode.right;
+        node.left = new Node(1);
+        node.right = new Node(1);
+
+        /*
+
+       1
+      / \
+     /   \
+    /     \
+   /       \
+   2       3
+  / \     / \
+ /   \   /   \
+ 4   5   6   7
+        / \ / \
+        8 9 0 1
+
+         */
+
+        return root;
+
+    }
+
+    /* Given a binary tree, print its nodes according to the
+    "bottom-up" postorder traversal. */
+    public static void printPostorder(Node node)
+    {
+        if (node == null)
+            return;
+
+        // first recur on left subtree
+        printPostorder(node.left);
+
+        // then recur on right subtree
+        printPostorder(node.right);
+
+        // now deal with the node
+        System.out.print(node.data + " ");
+    }
+
 }

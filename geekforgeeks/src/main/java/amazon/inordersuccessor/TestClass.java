@@ -26,7 +26,7 @@ class BinaryTree
 
     /* Given a binary tree, print its nodes according to the
     "bottom-up" postorder traversal. */
-    void printPostorder(Node node)
+    public static void printPostorder(Node node)
     {
         if (node == null)
             return;
@@ -77,6 +77,8 @@ class BinaryTree
     void printPostorder() {	 printPostorder(root); }
     void printInorder() {	 printInorder(root); }
     void printPreorder() {	 printPreorder(root); }
+
+    BinaryTree tree = null;
 
     // Driver method
     public static void main(String[] args)
@@ -147,6 +149,5 @@ class BinaryTree
     }
 
     static Node next =null;
-
 }
 
