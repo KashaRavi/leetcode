@@ -46,6 +46,29 @@ public class TreeUtil {
         return tNode;
     }
 
+    static Node buildTree(int[] in, int[] pre, int inStrt, int inEnd) {
+        if (inStrt > inEnd)
+            return null;
+
+		/* Pick current node from Preorder traversal using preIndex
+        and increment preIndex */
+        Node<Integer> tNode = new Node<Integer>(pre[preIndex++]);
+
+		/* If this node has no children then return */
+        if (inStrt == inEnd)
+            return tNode;
+
+		/* Else find the index of this node in Inorder traversal */
+        int inIndex = search(in, inStrt, inEnd, tNode.data);
+
+		/* Using index in Inorder traversal, construct left and
+		right subtress */
+        tNode.left = buildTree(in, pre, inStrt, inIndex - 1);
+        tNode.right = buildTree(in, pre, inIndex + 1, inEnd);
+
+        return tNode;
+    }
+
 	/* UTILITY FUNCTIONS */
 
     /* Function to find index of value in arr[start...end]
@@ -59,8 +82,18 @@ public class TreeUtil {
         return i;
     }
 
+//    The function assumes that value is present in in[] */
+    static int search(int[] arr, int strt, int end, int value) {
+        int i;
+        for (i = strt; i <= end; i++) {
+            if (arr[i] == value)
+                return i;
+        }
+        return i;
+    }
+
     /* This funtcion is here just to test buildTree() */
-    void printInorder(Node node) {
+   public static void printInorder(Node node) {
         if (node == null)
             return;
 
@@ -79,6 +112,7 @@ public class TreeUtil {
 
         TreeUtil tree = new TreeUtil();
         Node root = constructTree(tree);
+//        Node root = constructIntTree(tree);
         // building the tree by printing inorder traversal
         System.out.println("Inorder traversal of constructed tree is : ");
         tree.printInorder(root);
@@ -107,6 +141,7 @@ public class TreeUtil {
             if(line.length()==0)
                 continue;
         }
+
         String inOrderLine = line;
         String preOrderLine = br.readLine();
 
@@ -122,6 +157,47 @@ public class TreeUtil {
 
         int len = in.length;
         Node root = tree.buildTree(in, pre, 0, len - 1);
+        return root;
+    }
+
+
+    public static Node constructIntTree() throws IOException {
+        InputStream inpStream;
+        inpStream = ReadJavaProperties.class.getClassLoader()
+                .getResourceAsStream("trees.txt");
+        BufferedReader br = new BufferedReader(new InputStreamReader(inpStream));
+
+        String line = "";
+        boolean comment= true;
+        while(comment || line.length()==0 ) {
+            line= br.readLine();
+            if(line.startsWith("*/")) {
+                comment = false;
+                line =br.readLine();
+            }
+
+            if(line.startsWith("/*")){
+                comment = true;
+            }
+            if(line.length()==0)
+                continue;
+        }
+
+        String inOrderLine = line;
+        String preOrderLine = br.readLine();
+
+        String[] charStr = inOrderLine.split("\\s+");
+        int[] in = new int[charStr.length];
+        for (int i = 0; i < charStr.length; i++)
+            in[i] = Integer.parseInt(charStr[i]);
+
+        charStr = preOrderLine.split("\\s+");
+        int[] pre = new int[charStr.length];
+        for (int i = 0; i < charStr.length; i++)
+            pre[i] = Integer.parseInt(charStr[i]);
+
+        int len = in.length;
+        Node root = buildTree(in, pre, 0, len - 1);
         return root;
     }
 
@@ -166,6 +242,7 @@ public class TreeUtil {
         return root;
 
     }
+
 
     public static Node<Integer> getIntTree1()
     {
@@ -220,6 +297,23 @@ public class TreeUtil {
 
         // now deal with the node
         System.out.print(node.data + " ");
+    }
+
+
+    /* Given a binary tree, print its nodes in preorder*/
+    public static void printPreorder(Node node)
+    {
+        if (node == null)
+            return;
+
+		/* first print data of node */
+        System.out.print(node.data + " ");
+
+		/* then recur on left sutree */
+        printPreorder(node.left);
+
+		/* now recur on right subtree */
+        printPreorder(node.right);
     }
 
 }
