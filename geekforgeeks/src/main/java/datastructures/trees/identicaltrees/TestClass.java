@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class TestClass {
 
-    private static  boolean checkIfIdentical(Node<Integer> root1, Node<Integer> root2) {
+    private static boolean checkIfIdentical(Node<Integer> root1, Node<Integer> root2) {
         if (root1 == null && root2 == null) {
             return true;
         } else if (root1 == null) {
@@ -33,7 +33,10 @@ public class TestClass {
         Node<Integer> root2 = ITreeUtil.getTree(2);
         ITreeUtil.printTree(1);
         ITreeUtil.printTree(2);
+        isSame(root1, root2);
+    }
 
+    public static void isSame(Node<Integer> root1, Node<Integer> root2) {
         if(checkIfIdentical(root1, root2)) {
             System.out.println("Identical");
         } else {

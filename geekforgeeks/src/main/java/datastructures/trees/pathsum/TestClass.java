@@ -18,10 +18,10 @@ public class TestClass {
 
     public static void main(String[] args) throws IOException {
 
-        Node<Integer> root = ITreeUtil.getTree(3);
+        Node<Integer> root = ITreeUtil.getTree(1);
 
-//        printPath(root, 18);
-        printPath(root, 11);
+        printPath(root, 18);
+//        printPath(root, 11);
 //
         while(!stack.isEmpty()) {
             System.out.print(stack.pop() +"->");
