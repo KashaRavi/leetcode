@@ -18,6 +18,23 @@ public class TestClass {
         return floor(root, null, null, val);
     }
 
+    public static int ceil2(Node<Integer> root, int data) {
+        if (root == null)
+            return Integer.MAX_VALUE;
+        if (root.data == data)
+            return data;
+        int ceil = -1;
+        if (root.data < data)
+            ceil= ceil2(root.right, data);
+        else
+            ceil = ceil2(root.left, data);
+
+        if (ceil >= data && root.data > data)
+            return Math.min(ceil, root.data);
+
+        return ceil;
+    }
+
     public static int ceil(Node<Integer> root, Node<Integer> predecessor,
             Node<Integer> successor, int val) {
         if (root != null) {
@@ -64,21 +81,27 @@ public class TestClass {
 
     public static void main(String[] args) throws IOException {
         ITreeUtil.printTree(2);
-        Node<Integer> root = ITreeUtil.getTree(2);
+//        Node<Integer> root = ITreeUtil.getTree(2);
+        Node<Integer> root = ITreeUtil.getTree(3);
 
         System.out.println("ceil(10):" + ceil(root, 10));
+        System.out.println("ceil2(10):" + ceil2(root, 10));
         System.out.println("floor(10):" + floor(root, 10));
 
         System.out.println("ceil(3):" + ceil(root, 3));
+        System.out.println("ceil2(3):" + ceil2(root, 3));
         System.out.println("floor(3):" + floor(root, 3));
 
         System.out.println("ceil(99):" + ceil(root, 99));
+        System.out.println("ceil2(99):" + ceil2(root, 99));
         System.out.println("floor(99):" + floor(root, 99));
 
         System.out.println("ceil(1):" + ceil(root, 1));
+        System.out.println("ceil2(1):" + ceil2(root, 1));
         System.out.println("floor(1):" + floor(root, 1));
 
         System.out.println("ceil(1000):" + ceil(root, 1000));
+        System.out.println("ceil2(1000):" + ceil2(root, 1000));
         System.out.println("floor(1000):" + floor(root, 1000));
     }
 }

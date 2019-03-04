@@ -1,4 +1,4 @@
-package datastructures.trees.constructtree.inorder.preorder;
+package datastructures.trees.constructtree.inorder.preorder.postorder;
 
 import tree.Node;
 
