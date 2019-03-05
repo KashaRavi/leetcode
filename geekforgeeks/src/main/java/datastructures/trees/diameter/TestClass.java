@@ -98,8 +98,8 @@ public class TestClass {
 
         int rHeight = computeDiameter(root.right);
         int lHeight = computeDiameter(root.left);
-        if(rHeight+lHeight > diameter)
-            diameter = lHeight+rHeight;
+        if(rHeight+lHeight + 1 > diameter)
+            diameter = lHeight+rHeight + 1;
         return Math.max(lHeight,rHeight)+1;
     }
 }
