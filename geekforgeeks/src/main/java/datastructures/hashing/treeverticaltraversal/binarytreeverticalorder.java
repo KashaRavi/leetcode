@@ -1,4 +1,4 @@
-package datastructures.hashing;
+package datastructures.hashing.treeverticaltraversal;
 
 import tree.ITreeUtil;
 import tree.Node;
