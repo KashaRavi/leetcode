@@ -32,7 +32,7 @@ public class TestClass {
         for (Map.Entry e : relationMap.entrySet()) {
             String mgr = (String) e.getValue();
             if (!empMgrMap.containsKey(mgr)) {
-                empMgrMap.put(mgr, new ArrayList<>());
+                empMgrMap.put(mgr, new ArrayList<String>());
             }
             empMgrMap.get(mgr).add((String) e.getKey());
         }
