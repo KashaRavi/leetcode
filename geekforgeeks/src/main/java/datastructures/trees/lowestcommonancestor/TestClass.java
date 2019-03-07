@@ -1,6 +1,6 @@
+//https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
 package datastructures.trees.lowestcommonancestor;
 
-import datastructures.linkedlist.LLUtil;
 import tree.ITreeUtil;
 import tree.Node;
 
@@ -9,15 +9,17 @@ import java.io.IOException;
 /**
  * Created by rkasha on 3/6/19.
  */
+
+//FixMe
+//This is not fully implemented.
 public class TestClass {
 
     static  Node<Integer> lca = null;
 
     public static void main(String[] args) throws IOException {
-        Node<Integer> root = ITreeUtil.getTree(3);
+        Node<Integer> root = ITreeUtil.getTree(2);
         ITreeUtil.printTree(root);
-        ITreeUtil.printInorder(root);
-        if(hasNodes(root, 2,3)==3){
+        if(hasNodes(root, 5,12)==3){
             System.out.println(lca.data);
         }
     }
@@ -33,18 +35,6 @@ public class TestClass {
             return 0;
         }
 
-        int lVal = hasNodes(root.left, a, b);
-
-        if(lVal ==3) {
-            return  lVal;
-        }
-
-        int rVal = hasNodes(root.right, a, b);
-
-        if(rVal == 3) {
-            return rVal;
-        }
-
         int curVal = 0;
         if(root.data == a ) {
             curVal = 1;
@@ -52,7 +42,16 @@ public class TestClass {
             curVal = 2;
         }
 
-        if((lVal ^ rVal) ==3 || (curVal ^ lVal) == 3 || (curVal ^ rVal) ==3 ) {
+        int lVal = hasNodes(root.left, a, b);
+
+        if( (curVal ^ lVal) == 3 ) {
+            lca = root;
+            return 3;
+        }
+
+        int rVal = hasNodes(root.right, a, b);
+
+        if( (curVal ^ rVal) == 3 ) {
             lca = root;
             return 3;
         }
