@@ -43,6 +43,24 @@ public class ITreeUtil {
         System.out.println(getTreeStr(id));
     }
 
+    public static void printTree(final Node<Integer> root) throws IOException {
+        for(Map.Entry<Integer,Node<Integer>> entry: idToTreeMap.entrySet()){
+            if(entry.getValue() == root) {
+                System.out.println(getTreeStr(entry.getKey()));
+                return;
+            }
+        }
+        System.out.println("No tree found");
+    }
+
+
+    /**
+     * Prints tree with only single character values in a proper way
+     */
+//    public static void printTree(Node root) {
+//        BTreePrinter.printNode(root);
+//    }
+
     public static void loadTrees(String filename) throws IOException {
         if (idToTreeMap == null || idToTreeMap.size() == 0) {
             InputStream inpStream = ReadJavaProperties.class.getClassLoader()
@@ -163,11 +181,5 @@ public class ITreeUtil {
         printPreorder(node.right);
     }
 
-    /**
-     * Prints tree with only single character values in a proper way
-     */
-    public static void printTree(Node root) {
-        BTreePrinter.printNode(root);
-    }
 
 }
