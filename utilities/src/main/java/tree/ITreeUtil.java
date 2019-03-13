@@ -57,9 +57,9 @@ public class ITreeUtil {
     /**
      * Prints tree with only single character values in a proper way
      */
-//    public static void printTree(Node root) {
-//        BTreePrinter.printNode(root);
-//    }
+    public static void printTree(Node root, boolean isNotPersisted) {
+        BTreePrinter.printNode(root);
+   }
 
     public static void loadTrees(String filename) throws IOException {
         if (idToTreeMap == null || idToTreeMap.size() == 0) {
