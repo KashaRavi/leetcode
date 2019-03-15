@@ -1,4 +1,5 @@
 //This question is asked in pramp interview
+//https://www.geeksforgeeks.org/a-product-array-puzzle/
 package datastructures.Arrays.productofarrayelems;
 
 import datastructures.Arrays.ArrayUtils;
