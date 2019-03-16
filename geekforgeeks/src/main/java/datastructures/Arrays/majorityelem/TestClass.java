@@ -2,7 +2,7 @@
 
 //It is an implementation of Boyer-Moore voting algorithm
 //which depends on the fact if a majority element exists in a array then that element cannot be
-// cancelled by another element.
+// cancelled by another element. so at the end the uncancelled element will be the majority element
 package datastructures.Arrays.majorityelem;
 
 /**
