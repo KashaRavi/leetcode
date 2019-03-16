@@ -22,7 +22,7 @@ public class TestClass {
         for(int i=0;i<arr.length;i++) {
 
             //if the prev number is already present in the set, then we have already counted this
-            // element as part of some subsequence.
+            // element as part of some subsequence discovered so far    .
             if(!set.contains(arr[i]-1)){
                 // This means arr[i] is not already part of any contiguous sequence discovered so far.
                 //So now start looking for a contiguous sequence starting from arr[i]
