@@ -12,16 +12,19 @@ import java.util.Map;
  * Created by rkasha on 3/2/19.
  */
 public class TestClass {
-    static Map<Integer, Integer> cache = new HashMap<Integer, Integer>();
+    static Map<Integer, Integer> table = new HashMap<Integer, Integer>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        cache.put(2, 1);
-        cache.put(1, 0);
-        int t = Integer.parseInt(br.readLine());
+        table.put(2, 1);
+        table.put(1, 0);
+        int t = 1;
+//        int t = Integer.parseInt(br.readLine());
         for (int i = 0; i < t; i++) {
-            int n = Integer.parseInt(br.readLine());
-            System.out.println(findMinDays(n));
+//            int n = Integer.parseInt(br.readLine());
+            int n = 1000000000;
+//            System.out.println(findMinDays(n));
+            System.out.println(findMinDays2(n));
             System.out.println();
         }
     }
@@ -33,25 +36,41 @@ public class TestClass {
      */
 
     public static int findMinDays(int n) {
-        if (cache.containsKey(n)) {
-            return cache.get(n);
+        if (table.containsKey(n)) {
+            return table.get(n);
         }
 
         if ((n & n - 1) == 0) {
             double val3 = Math.log10(n) / Math.log10(2);
-            cache.put(n, (int) val3);
-            return cache.get(n);
+            table.put(n, (int) val3);
+            return table.get(n);
         }
 
-        int val = findMinDays(n - 1);
+        int val=Integer.MAX_VALUE;
         if (n % 2 == 0) {
-            int val2 = findMinDays(n / 2);
-            val = Math.min(val, val2) + 1;
+            val = Math.min(findMinDays(n / 2), findMinDays(n - 1));
         } else {
-            val = val + 1;
+            val = findMinDays(n - 1);
         }
-        cache.put(n, val);
-        return cache.get(n);
+        val = val+1;
+
+        table.put(n, val);
+        return table.get(n);
     }
 
+    public static int findMinDays2(int n) {
+
+        int[] table = new int[n+1];
+        table[1]=0;
+        table[2]=1;
+
+        for(int i=3;i<=n;i++) {
+            if(i%2==0) {
+                table[i] = Math.min(table[i / 2], table[i - 1])+1;
+            } else{
+                table[i]= table[i-1]+1;
+            }
+        }
+        return table[n];
+    }
 }
