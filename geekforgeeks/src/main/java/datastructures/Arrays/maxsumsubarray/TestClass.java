@@ -1,5 +1,7 @@
 package datastructures.Arrays.maxsumsubarray;
 
+import java.util.Arrays;
+
 /**
  * Created by rkasha on 3/14/19.
  */
@@ -12,10 +14,12 @@ public class TestClass {
         //        int arr[] = {8,10,2};
         //        int arr[] = {3, 3, 4, 2, 4, 4, 2, 4, 4};
 //        int arr[] = {-2, -3, 4, -1, -2, 1, 5, -3};
-        int arr[] = {-2, -3, -4, -1, -2, -1, -5, -3};
+//        int arr[] = {-2, -3, -4, -1, -2, -1, -5, -3};
+        int arr[] = {4, -1, 5};
 
         int k = 4;
         int output= findMaxSumSubArray(arr);
+        largestContiguousSubArray(arr);
         System.out.println(output);
     }
 
@@ -48,5 +52,29 @@ public class TestClass {
 
         System.out.println();
         return max;
+    }
+
+    public static void largestContiguousSubArray(int[] arr) {
+        if (arr == null)
+            return;
+        int startIndex = 0;
+        int endIndex = 0;
+        int sum = arr[0];
+        int maxSum = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            sum = sum + arr[i];
+            if (sum >= maxSum) {
+                maxSum = sum;
+                endIndex = i;
+            }
+            if (arr[i] > maxSum) {
+                startIndex = i;
+                maxSum = sum = arr[i];
+            }
+            if (endIndex < startIndex)
+                endIndex = startIndex;
+        }
+        System.out.printf("For array:%s: Largest contiguous startIndex=%d, endIndex=%d, sum=%d%n",
+                Arrays.toString(arr), startIndex, endIndex, maxSum);
     }
 }

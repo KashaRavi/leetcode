@@ -43,8 +43,9 @@ class RearrangeArray {
 
 
     public static void main(String[] args) {
-        int arr[] = { 2, 3, -1, -4 };
-        int n = arr.length;
+//        int arr[] = { 2, 3, -1, -4 };
+//        int arr[] = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8};
+        int arr[] ={1, 2, 3, -4, -1, 4};
         reOrderElementsWithOrder(arr);
         ArrayUtils.printArray(arr);
     }
