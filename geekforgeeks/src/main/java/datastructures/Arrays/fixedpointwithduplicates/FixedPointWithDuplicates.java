@@ -1,5 +1,5 @@
 //https://www.geeksforgeeks.org/find-fixed-point-value-equal-index-given-array-duplicates-allowed/
-package datastructures.Arrays;
+package datastructures.Arrays.fixedpointwithduplicates;
 
 /**
  * Created by rkasha on 3/26/19.
