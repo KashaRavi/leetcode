@@ -9,5 +9,6 @@ public class ArrayUtils {
         for(int val : arr) {
             System.out.print(val+" ");
         }
+        System.out.println();
     }
 }

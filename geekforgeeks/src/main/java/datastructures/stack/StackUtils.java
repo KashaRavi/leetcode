@@ -13,10 +13,12 @@ import static java.util.Arrays.*;
 public class StackUtils {
 
     public static void printStack(Stack<Integer> stack) {
-        Iterator itr = stack.iterator();
-        while (itr.hasNext()) {
-            System.out.println(itr.next());
-        }
+        if(stack.isEmpty()) return;
+
+        int val= stack.pop();
+        System.out.println(val);
+        printStack(stack);
+        stack.push(val);
     }
 
     public static Stack<Integer> getStack(int[] arr) {
