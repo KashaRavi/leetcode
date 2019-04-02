@@ -1,7 +1,7 @@
 //https://www.geeksforgeeks.org/find-number-of-employees-under-every-manager/
 package datastructures.hashing.countreportees;
 
-import datastructures.hashing.HashUtil;
+import datastructures.hashing.HashUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class TestClass {
         for (String mgr : empMgrMap.keySet()) {
             countreportees(empMgrMap, mgr);
         }
-        HashUtil.printMap(result);
+        HashUtils.printMap(result);
 
     }
 
