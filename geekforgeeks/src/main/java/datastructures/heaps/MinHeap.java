@@ -7,74 +7,77 @@ import datastructures.Arrays.ArrayUtils;
  */
 public class MinHeap {
 
+    int heapSize;
     int capacity;
     int arr[];
 
-    int heapSize;
-
-    public int parent(int i){
-        return (i-1)/2;
+    public int parent(int i) {
+        return (i - 1) / 2;
     }
 
-    public int left(int i){
-        return 2*i+1;
+    public int left(int i) {
+        return 2 * i + 1;
     }
 
-    public int right(int i){
-        return left(i)+1;
+    public int right(int i) {
+        return left(i) + 1;
     }
 
-    public void insertKey(int val) throws Exception{
-        if(heapSize<capacity){
-            int i= heapSize;
+    public void insertKey(int val) throws Exception {
+        if (heapSize <= capacity) {
+            int i = heapSize;
             heapSize++;
-            arr[i]=val;
+            arr[i] = val;
 
             int parent = parent(i);
-            while(i>0 && arr[i]<arr[parent]){
+            while (i > 0 && arr[i] < arr[parent]) {
                 int tmp = arr[i];
-                arr[i]=arr[parent];
+                arr[i] = arr[parent];
                 arr[parent] = tmp;
-                i= parent;
+                i = parent;
                 parent = parent(i);
             }
         } else {
             throw new IllegalAccessException();
         }
-
     }
 
-    public int getMin() throws IllegalAccessException{
-        if(heapSize>0) {
+    public void buildHeap() {
+        for (int i = parent(this.arr.length - 1); i >= 0; i--) {
+            minHeapify(i);
+        }
+    }
+
+    public int getMin() throws IllegalAccessException {
+        if (heapSize > 0) {
             return arr[0];
         }
 
         throw new IllegalAccessException();
     }
 
-    public int extractMin(){
+    public int extractMin() {
         int val = arr[0];
-        arr[0]=arr[heapSize-1];
+        arr[0] = arr[heapSize - 1];
         heapSize--;
         minHeapify(0);
         return val;
     }
 
-    public void decreasekey(int i,int new_val){
-        arr[i]= new_val;
+    public void decreasekey(int i, int new_val) {
+        arr[i] = new_val;
         //percolate up
         int parent = parent(i);
-        while(i>0 && arr[i]<arr[parent]){
+        while (i > 0 && arr[i] < arr[parent]) {
             int tmp = arr[i];
-            arr[i]=arr[parent];
+            arr[i] = arr[parent];
             arr[parent] = tmp;
-            i= parent;
+            i = parent;
             parent = parent(i);
         }
     }
 
-
-    public void deleteKey(int i){
+    public void deleteKey(int i) {
         decreasekey(i, Integer.MIN_VALUE);
         extractMin();
     }
@@ -86,10 +89,10 @@ public class MinHeap {
             int r = right(i);
 
             int smallest = i;
-            if (l< heapSize && arr[l] < arr[i]) {
+            if (l < heapSize && arr[l] < arr[i]) {
                 smallest = l;
             }
-            if (r<heapSize && arr[r] < arr[smallest]) {
+            if (r < heapSize && arr[r] < arr[smallest]) {
                 smallest = r;
             }
 
@@ -104,7 +107,12 @@ public class MinHeap {
         }
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
+        testHeapOps();
+        testBuildHeap();
+    }
+
+    public static void testHeapOps() {
         MinHeap h = new MinHeap(5);
         try {
 
@@ -118,18 +126,32 @@ public class MinHeap {
             h.insertKey(1);
             System.out.println(h.getMin());
             h.printHeap();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public  MinHeap(int capacity){
-        heapSize=0;
-        this.capacity =capacity;
+    public static void testBuildHeap() {
+        int[] values = { 3, 4, 5, 2, 6, 8, 1 };
+        ArrayUtils.printArray(values);
+        MinHeap h = new MinHeap(values);
+        h.buildHeap();
+        h.printHeap();
+    }
+
+    public MinHeap(int capacity) {
+        heapSize = 0;
+        this.capacity = capacity;
         arr = new int[this.capacity];
     }
 
-    public void printHeap(){
+    public MinHeap(int[] values) {
+        heapSize = values.length;
+        this.capacity = values.length;
+        arr = values;
+    }
+
+    public void printHeap() {
         ArrayUtils.printArray(this.arr);
     }
 }
