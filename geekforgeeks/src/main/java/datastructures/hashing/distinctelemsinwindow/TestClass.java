@@ -42,7 +42,7 @@ public class TestClass {
                 map.put(startElem, v);
             }
 
-            // insert the elem at currIndex
+            // insertKey the elem at currIndex
             int newElem = arr[currIndex];
             map.merge(newElem, 1, (a, b) -> a + b);
             windowBegin++;
