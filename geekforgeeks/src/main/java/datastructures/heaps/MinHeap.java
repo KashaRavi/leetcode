@@ -139,6 +139,10 @@ public class MinHeap {
         h.printHeap();
     }
 
+    public int getHeapSize(){
+        return this.heapSize;
+    }
+
     public MinHeap(int capacity) {
         heapSize = 0;
         this.capacity = capacity;
