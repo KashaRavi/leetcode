@@ -15,6 +15,16 @@ public class TestClass1 {
         ArrayUtils.printArray(ans);
     }
 
+    /**
+     * This can be better implemented with BST instead of linear search. But still it is timing out
+     * in the challenge. The idea is to use online sorting algorithm. I don't know any such algorithms
+     * for sorting an incoming stream of numbers. One such suggestion is to go with tree sort kind of
+     * algorithm
+     *
+     * @param arr
+     * @param q
+     * @return
+     */
     public static int[] stairClimbingProblem(int[] arr, int[] q) {
 
         int[] ans = new int[arr.length];
