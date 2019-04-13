@@ -11,4 +11,11 @@ public class ArrayUtils {
         }
         System.out.println();
     }
+
+    public static void printArray(Integer[] arr) {
+        for(int val : arr) {
+            System.out.print(val+" ");
+        }
+        System.out.println();
+    }
 }
