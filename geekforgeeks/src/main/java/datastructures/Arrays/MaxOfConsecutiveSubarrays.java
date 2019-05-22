@@ -10,9 +10,9 @@ import java.util.LinkedList;
  */
 public class MaxOfConsecutiveSubarrays {
     public static void main(String[] args) {
-//        int arr[] = {1, 2, 3, 1, 4, 5, 2, 3, 6};
-        int arr[] = {8, 5, 10, 7, 9, 4, 15, 12, 90, 13};
-        int k=2;
+        int arr[] = {1, 2, 3, 1, 4, 5, 2, 3, 6};
+//        int arr[] = {8, 5, 10, 7, 9, 4, 15, 12, 90, 13};
+        int k=3;
         ArrayUtils.printArray(findMaxOfConsecutiveSubarrays(arr, k));
     }
 
@@ -35,7 +35,7 @@ public class MaxOfConsecutiveSubarrays {
         for (int i = k; i < arr.length; i++) {
             result[currWindow++] = arr[queue.peekFirst()];
 
-            while(!queue.isEmpty() && i- queue.peekFirst() >= k) {
+            if (i - queue.peekFirst() >= k) {
                 queue.removeFirst();
             }
 
