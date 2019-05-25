@@ -139,6 +139,15 @@ public class MinHeap {
         h.printHeap();
     }
 
+    public MinHeap(int[] arr, int start, int end) {
+        int[] values = new int[end-start+1];
+        for(int i=start;i<=end;i++){
+            values[i-start]=arr[i];
+        }
+        initialize(values);
+        buildHeap();
+    }
+
     public int getHeapSize(){
         return this.heapSize;
     }
@@ -150,6 +159,10 @@ public class MinHeap {
     }
 
     public MinHeap(int[] values) {
+        initialize(values);
+    }
+
+    private void initialize(int[] values) {
         heapSize = values.length;
         this.capacity = values.length;
         arr = values;
