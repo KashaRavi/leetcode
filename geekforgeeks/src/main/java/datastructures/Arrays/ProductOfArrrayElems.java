@@ -1,13 +1,13 @@
 //This question is asked in pramp interview
 //https://www.geeksforgeeks.org/a-product-array-puzzle/
-package datastructures.Arrays.productofarrayelems;
+package datastructures.Arrays;
 
 import datastructures.Arrays.ArrayUtils;
 
 /**
  * Created by rkasha on 3/14/19.
  */
-public class TestClass {
+public class ProductOfArrrayElems {
     public static void main(String[] args) {
 
         //        int arr[] = {1, 2, 1, 3, 4, 2, 3};
